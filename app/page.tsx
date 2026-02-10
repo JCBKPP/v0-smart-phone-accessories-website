@@ -7,7 +7,7 @@ import { BranchPreview } from "@/components/branch-preview";
 
 export default function HomePage() {
   return (
-    <>
+    <> 
       <HeroCarousel />
       <CategoryGrid />
       <ServicesSection />
