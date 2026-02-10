@@ -7,7 +7,6 @@ import { Menu, X } from "lucide-react";
 import { SmartSearch } from "@/components/smart-search";
 import { SpLogo } from "@/components/sp-logo";
 import { cn } from "@/lib/utils";
-import { Smartphone } from "@/components/smartphone"; // Added import for Smartphone
 
 const NAV_LINKS = [
   { href: "/", label: "Home" },

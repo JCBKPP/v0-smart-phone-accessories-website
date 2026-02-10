@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Phone, MapPin, Smartphone } from "lucide-react";
+import { Phone, MapPin } from "lucide-react";
 import { SpLogo } from "@/components/sp-logo";
 
 const QUICK_LINKS = [
