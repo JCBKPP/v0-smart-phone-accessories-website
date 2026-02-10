@@ -1,42 +1,99 @@
 "use client";
 
-import React from "react"
-
 import { Star } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { useLanguage } from "@/lib/language-context";
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useRef, useState, useEffect, useCallback } from "react";
 
 const TESTIMONIALS = [
   {
+    name: "George Majunting",
+    quote:
+      "The lady staff here is very helpful and friendly. She gives good recommendations based on our needs and even helps to install the screen protector neatly. The prices are reasonable and worth it. Highly recommended!",
+    rating: 5,
+    source: "Google Review",
+  },
+  {
+    name: "AFiey 90",
+    quote:
+      "I've been to this shop couples of times and the services given was beyond perfectionist. The staff was amazingly good and very friendly. They were very helpful in fulfilling my request. Everything that I am looking for can be found here by the help of their great staff. Highly recommended!",
+    rating: 5,
+    source: "Google Review",
+  },
+  {
+    name: "Venom",
+    quote:
+      "The best shop for phone accessories. Good quality and lowest price. Staff also helpful & friendly to customer.",
+    rating: 5,
+    source: "Google Review",
+  },
+  {
+    name: "Nadiamemey Sanusol",
+    quote:
+      "Very nice shop. Good service and price low.. staff very friendly and accommodating.",
+    rating: 5,
+    source: "Google Review",
+  },
+  {
+    name: "Alex 5589",
+    quote:
+      "Good staff friendly.. phone accessories paling complete. Harga yg mantap dan quality, no complaint.",
+    rating: 5,
+    source: "Google Review",
+  },
+  {
+    name: "Sylvovel Yuni",
+    quote:
+      "Recommended untuk kalian yang cari casing dan tempered glass harga mampu milik.. Service pun sangat friendly. Overall semua nice.",
+    rating: 5,
+    source: "Google Review",
+  },
+  {
+    name: "Tujuh Belas",
+    quote: "Good staff and also good products.",
+    rating: 5,
+    source: "Google Review",
+  },
+  {
+    name: "MiszNorafifah Exo",
+    quote: "Nice & good.",
+    rating: 5,
+    source: "Google Review",
+  },
+  {
     name: "Zuan Mar",
     quote:
-      "staff grand merdeka sngt bagus aku juga cara durang layan cust. nanti aku datang lagi...",
+      "Staff grand merdeka sangat bagus, aku suka cara durang layan customer. Nanti aku datang lagi...",
     rating: 5,
+    source: "Facebook Review",
   },
   {
     name: "Firdaus Muhammad",
     quote:
-      "Staff grand merdeka mmg friendly..lagi satu drg layan cust dgn mesra..ndk pernah mengecewakan cust...sya sarankan utk cust yg d luar sana cuba try dahulu brg'd grand merdeka ni sbb semua nya berkualiti dan pekerja pun sngat bgus dlm melyan cust",
+      "Staff grand merdeka memang friendly.. lagi satu dorang layan customer dgn mesra. Semua brg berkualiti dan pekerja sangat bgus dlm melayan customer.",
     rating: 5,
+    source: "Facebook Review",
   },
   {
     name: "Ida Zara",
     quote:
-      "Staff grand merdeka sangat bagus jangan lupa ya guys datang ndak rugi la k ndak mau caka banyak la nnty datang la sendiri ok",
+      "Staff grand merdeka sangat bagus jangan lupa ya guys datang, tidak rugi.",
     rating: 5,
+    source: "Facebook Review",
   },
   {
     name: "Mark Sylvester",
     quote:
-      "Saya sokong 100% Smart Phone Accessories Sdn Bhd buka di Area Kepayan Lintas",
+      "Saya sokong 100% Smart Phone Accessories Sdn Bhd buka di Area Kepayan Lintas.",
     rating: 5,
+    source: "Facebook Review",
   },
   {
     name: "Rosnah Japall",
     quote:
-      "cheap stuff, service okay. staff are all friendly suka tolong lagi. very recommended.",
+      "Cheap stuff, service okay. Staff are all friendly suka tolong lagi. Very recommended.",
     rating: 5,
+    source: "Facebook Review",
   },
 ];
 
@@ -49,9 +106,13 @@ function getInitials(name: string) {
     .slice(0, 2);
 }
 
-function TestimonialCard({ review }: { review: (typeof TESTIMONIALS)[number] }) {
+function TestimonialCard({
+  review,
+}: {
+  review: (typeof TESTIMONIALS)[number];
+}) {
   return (
-    <div className="rounded-xl glass-card p-5 md:p-6 flex flex-col gap-3 shadow-sm h-full">
+    <div className="rounded-xl glass-card p-5 flex flex-col gap-3 shadow-sm h-full min-h-[180px]">
       <div className="flex items-center gap-3">
         <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary text-sm font-bold shrink-0">
           {getInitials(review.name)}
@@ -72,7 +133,7 @@ function TestimonialCard({ review }: { review: (typeof TESTIMONIALS)[number] }) 
         {`"${review.quote}"`}
       </p>
       <p className="text-xs text-muted-foreground/60 mt-auto">
-        Facebook Review
+        {review.source}
       </p>
     </div>
   );
@@ -80,39 +141,45 @@ function TestimonialCard({ review }: { review: (typeof TESTIMONIALS)[number] }) 
 
 export function TestimonialsSection() {
   const { t } = useLanguage();
-  const [current, setCurrent] = useState(0);
+  const scrollRef = useRef<HTMLDivElement>(null);
   const [isPaused, setIsPaused] = useState(false);
-  const touchStartX = useRef<number | null>(null);
+  const animationRef = useRef<number | null>(null);
+  const scrollPosRef = useRef(0);
 
-  const next = useCallback(() => {
-    setCurrent((prev) => (prev + 1) % TESTIMONIALS.length);
-  }, []);
+  // Duplicate the array for seamless infinite loop
+  const duplicated = [...TESTIMONIALS, ...TESTIMONIALS];
 
-  const prev = useCallback(() => {
-    setCurrent((prev) => (prev - 1 + TESTIMONIALS.length) % TESTIMONIALS.length);
-  }, []);
-
-  // Auto-advance every 5s
-  useEffect(() => {
-    if (isPaused) return;
-    const timer = setInterval(next, 5000);
-    return () => clearInterval(timer);
-  }, [next, isPaused]);
-
-  const handleTouchStart = (e: React.TouchEvent) => {
-    touchStartX.current = e.touches[0].clientX;
-    setIsPaused(true);
-  };
-
-  const handleTouchEnd = (e: React.TouchEvent) => {
-    if (touchStartX.current === null) return;
-    const diff = touchStartX.current - e.changedTouches[0].clientX;
-    if (Math.abs(diff) > 50) {
-      if (diff > 0) next();
-      else prev();
+  const animate = useCallback(() => {
+    const container = scrollRef.current;
+    if (!container || isPaused) {
+      animationRef.current = requestAnimationFrame(animate);
+      return;
     }
-    touchStartX.current = null;
-    setTimeout(() => setIsPaused(false), 3000);
+
+    scrollPosRef.current += 0.5; // pixels per frame (~30px/sec at 60fps)
+
+    // Reset seamlessly when we've scrolled past the first set
+    const halfWidth = container.scrollWidth / 2;
+    if (scrollPosRef.current >= halfWidth) {
+      scrollPosRef.current -= halfWidth;
+    }
+
+    container.scrollLeft = scrollPosRef.current;
+    animationRef.current = requestAnimationFrame(animate);
+  }, [isPaused]);
+
+  useEffect(() => {
+    animationRef.current = requestAnimationFrame(animate);
+    return () => {
+      if (animationRef.current) cancelAnimationFrame(animationRef.current);
+    };
+  }, [animate]);
+
+  // Sync scrollPosRef when user manually scrolls
+  const handleScroll = () => {
+    if (scrollRef.current && isPaused) {
+      scrollPosRef.current = scrollRef.current.scrollLeft;
+    }
   };
 
   return (
@@ -133,83 +200,25 @@ export function TestimonialsSection() {
           </p>
         </motion.div>
 
-        {/* Mobile/Tablet: single card auto-slide carousel */}
+        {/* Slow auto-sliding carousel */}
         <div
-          className="md:hidden relative overflow-hidden"
-          onTouchStart={handleTouchStart}
-          onTouchEnd={handleTouchEnd}
+          ref={scrollRef}
+          className="flex gap-4 overflow-x-hidden"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
+          onTouchStart={() => setIsPaused(true)}
+          onTouchEnd={() => setTimeout(() => setIsPaused(false), 3000)}
+          onScroll={handleScroll}
+          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
-          <div className="min-h-[200px]">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={current}
-                initial={{ opacity: 0, x: 60 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -60 }}
-                transition={{ duration: 0.3, ease: "easeInOut" }}
-              >
-                <TestimonialCard review={TESTIMONIALS[current]} />
-              </motion.div>
-            </AnimatePresence>
-          </div>
-
-          {/* Dots */}
-          <div className="flex justify-center gap-1.5 mt-4">
-            {TESTIMONIALS.map((_, i) => (
-              <button
-                key={i}
-                type="button"
-                onClick={() => { setCurrent(i); setIsPaused(true); setTimeout(() => setIsPaused(false), 3000); }}
-                className={`h-2 rounded-full transition-all duration-300 ${
-                  i === current ? "w-6 bg-primary" : "w-2 bg-border hover:bg-muted-foreground/40"
-                }`}
-                aria-label={`Go to testimonial ${i + 1}`}
-              />
-            ))}
-          </div>
-        </div>
-
-        {/* Desktop: also carousel but showing 3 at a time */}
-        <div
-          className="hidden md:block relative"
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-        >
-          <div className="grid grid-cols-3 gap-4">
-            {[0, 1, 2].map((offset) => {
-              const idx = (current + offset) % TESTIMONIALS.length;
-              return (
-                <AnimatePresence mode="wait" key={offset}>
-                  <motion.div
-                    key={idx}
-                    initial={{ opacity: 0, y: 12 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -12 }}
-                    transition={{ duration: 0.3, ease: "easeOut", delay: offset * 0.05 }}
-                  >
-                    <TestimonialCard review={TESTIMONIALS[idx]} />
-                  </motion.div>
-                </AnimatePresence>
-              );
-            })}
-          </div>
-
-          {/* Dots */}
-          <div className="flex justify-center gap-1.5 mt-6">
-            {TESTIMONIALS.map((_, i) => (
-              <button
-                key={i}
-                type="button"
-                onClick={() => { setCurrent(i); setIsPaused(true); setTimeout(() => setIsPaused(false), 3000); }}
-                className={`h-2 rounded-full transition-all duration-300 ${
-                  i === current ? "w-6 bg-primary" : "w-2 bg-border hover:bg-muted-foreground/40"
-                }`}
-                aria-label={`Go to testimonial ${i + 1}`}
-              />
-            ))}
-          </div>
+          {duplicated.map((review, i) => (
+            <div
+              key={`${review.name}-${i}`}
+              className="shrink-0 w-[280px] sm:w-[320px] md:w-[340px]"
+            >
+              <TestimonialCard review={review} />
+            </div>
+          ))}
         </div>
       </div>
     </section>
