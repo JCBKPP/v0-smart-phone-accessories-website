@@ -66,37 +66,7 @@ export default function FindUsPage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-10 md:py-12 section-muted text-center">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-xl md:text-2xl font-bold text-foreground text-balance">
-            {t("needHelp")}
-          </h2>
-          <p className="mt-2 text-sm text-muted-foreground max-w-md mx-auto leading-relaxed">
-            {t("needHelpSubtitle")}
-          </p>
-          <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
-            <a
-              href="tel:0167434011"
-              className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-accent transition-colors min-h-[44px]"
-            >
-              Inanam: 016-743 4011
-            </a>
-            <a
-              href="tel:0168784311"
-              className="inline-flex items-center gap-2 rounded-full border border-border text-foreground px-6 py-2.5 text-sm font-semibold hover:bg-secondary transition-all min-h-[44px]"
-            >
-              City Prade: 016-878 4311
-            </a>
-            <a
-              href="tel:0169375611"
-              className="inline-flex items-center gap-2 rounded-full border border-border text-foreground px-6 py-2.5 text-sm font-semibold hover:bg-secondary transition-all min-h-[44px]"
-            >
-              Karamunsing: 016-937 5611
-            </a>
-          </div>
-        </div>
-      </section>
+
     </>
   );
 }
