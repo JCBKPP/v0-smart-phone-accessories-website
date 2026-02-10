@@ -143,7 +143,7 @@ export default function FindUsPage() {
                 type="text"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                placeholder="Search store... e.g. K for Karamunsing"
+                placeholder="Search area"
                 className="w-full rounded-lg border border-border/50 bg-background/60 pl-9 pr-9 py-2.5 text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/40 transition-all"
               />
               {search && (
@@ -161,7 +161,7 @@ export default function FindUsPage() {
           {/* Area nav pills */}
           {!isSearching && (
             <nav
-              className="flex gap-1 overflow-x-auto pb-3 scrollbar-hide"
+              className="flex flex-wrap gap-1.5 pb-3"
               aria-label="Store areas"
             >
               {BRANCH_AREAS.map((area) => (
