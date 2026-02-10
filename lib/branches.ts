@@ -226,6 +226,4 @@ export const ALL_BRANCHES_FLAT = ALL_BRANCHES;
 export const PREVIEW_BRANCHES = [
   ALL_BRANCHES.find(b => b.id === "inanam-bc")!,
   ALL_BRANCHES.find(b => b.id === "karamunsing")!,
-  ALL_BRANCHES.find(b => b.id === "megalong")!,
-  ALL_BRANCHES.find(b => b.id === "sandakan")!,
 ];
