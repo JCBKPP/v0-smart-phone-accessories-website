@@ -130,18 +130,18 @@ export function FloatingActionBar() {
                 </span>
               </a>
 
-              {/* WhatsApp -- disabled */}
-              <div className="flex items-center gap-2.5 rounded-xl px-3 py-2.5 opacity-50 cursor-default">
+              {/* WhatsApp HQ */}
+              <a
+                href="https://wa.me/60167114848"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2.5 rounded-xl px-3 py-2.5 hover:bg-secondary transition-colors group"
+              >
                 <MessageCircle className="h-5 w-5 text-[#25D366] shrink-0" />
-                <div className="flex flex-col">
-                  <span className="text-xs font-medium text-foreground whitespace-nowrap">
-                    {t("whatsapp")}
-                  </span>
-                  <span className="text-[10px] text-muted-foreground leading-tight">
-                    {t("comingSoon")}
-                  </span>
-                </div>
-              </div>
+                <span className="text-xs font-medium text-foreground whitespace-nowrap">
+                  {t("whatsapp")}
+                </span>
+              </a>
 
               {/* Live Agent -- disabled */}
               <div className="flex items-center gap-2.5 rounded-xl px-3 py-2.5 opacity-50 cursor-default">

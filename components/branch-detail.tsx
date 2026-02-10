@@ -35,22 +35,26 @@ export function BranchDetail({
         <h3 className="text-xl font-semibold text-foreground text-balance">
           {name}
         </h3>
-        <div className="flex items-center gap-3">
-          <a
-            href={`tel:${phone.replace(/[^0-9+]/g, "")}`}
-            className="text-lg text-primary hover:text-accent transition-colors font-semibold"
-          >
-            {phone}
-          </a>
-          <a
-            href={`https://wa.me/60${phone.replace(/[^0-9]/g, "").replace(/^0/, "")}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-xs text-[#25D366] hover:underline font-medium"
-          >
-            WhatsApp
-          </a>
-        </div>
+        {phone ? (
+          <div className="flex items-center gap-3">
+            <a
+              href={`tel:${phone.replace(/[^0-9+]/g, "")}`}
+              className="text-lg text-primary hover:text-accent transition-colors font-semibold"
+            >
+              {phone}
+            </a>
+            <a
+              href={`https://wa.me/60${phone.replace(/[^0-9]/g, "").replace(/^0/, "")}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs text-[#25D366] hover:underline font-medium"
+            >
+              WhatsApp
+            </a>
+          </div>
+        ) : (
+          <p className="text-sm text-muted-foreground italic">{t("contactHQ")}</p>
+        )}
         <p className="text-sm text-muted-foreground leading-relaxed">
           {address}
         </p>

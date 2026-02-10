@@ -204,6 +204,90 @@ const ALL_BRANCHES: Branch[] = [
     mapUrl: "https://www.google.com/maps/place/SP/data=!4m7!3m6!1s0x323a0b1f2f506ddb",
     mapQuery: "SP Friendly Town Kudat",
   },
+  // --- Keningau ---
+  {
+    id: "keningau",
+    name: "SP Accessories Keningau",
+    shortName: "Keningau",
+    area: "keningau",
+    address: "Lot No.13, Ground Floor, Datun Commercial Complex, 89000 Keningau, Sabah",
+    phone: "016-323 8011",
+    hours: "10am - 10pm",
+    mapUrl: "https://www.google.com/maps/?cid=14831434441474718036",
+    mapQuery: "SP Datun Commercial Complex Keningau",
+  },
+  // --- Beaufort ---
+  {
+    id: "beaufort",
+    name: "SP Accessories Beaufort",
+    shortName: "Beaufort",
+    area: "beaufort",
+    address: "Lot 1, Block B, Kedai SEDCO, Jalan Padas, Pekan Beaufort, 89800 Beaufort, Sabah",
+    phone: "016-840 7011",
+    hours: "10am - 10pm",
+    mapUrl: "https://www.google.com/maps/?cid=3260275691749408529",
+    mapQuery: "SP SEDCO Shoplots Beaufort",
+  },
+  // --- Putatan (Putra Square) already exists above ---
+  // --- Papar ---
+  {
+    id: "papar-square",
+    name: "SP Accessories Papar Square",
+    shortName: "Papar Square",
+    area: "papar",
+    address: "Lot 53A, Block 9, Ground Floor, Papar Square, Kg Lingan, 89600 Papar, Sabah",
+    phone: "016-716 8011",
+    hours: "10am - 10pm",
+    mapUrl: "https://www.google.com/maps/?cid=1329785603635509749",
+    mapQuery: "SP Papar Square Papar",
+  },
+  {
+    id: "papar-benoni",
+    name: "SP Accessories Papar Benoni",
+    shortName: "Papar Benoni",
+    area: "papar",
+    address: "Lot 160, Ground Floor, Phase 3, Lorong Benoni 15, Benoni Commercial Centre, 89600 Papar, Sabah",
+    phone: "",
+    hours: "10am - 10pm",
+    mapUrl: "",
+    mapQuery: "SP Benoni Commercial Centre Papar",
+  },
+  // --- Tuaran ---
+  {
+    id: "tuaran",
+    name: "SP Accessories Tuaran",
+    shortName: "Tuaran",
+    area: "tuaran",
+    address: "Lot 47, Block E, Plaza CKS Tuaran, Jalan Tuaran, 89250 Tuaran, Sabah",
+    phone: "",
+    hours: "10am - 10pm",
+    mapUrl: "",
+    mapQuery: "SP Plaza CKS Tuaran",
+  },
+  // --- Sipitang ---
+  {
+    id: "sipitang",
+    name: "SP Accessories Sipitang",
+    shortName: "Sipitang",
+    area: "sipitang",
+    address: "Lot 2, Block J, Sipitang Commercial Centre, 89850 Sipitang, Sabah",
+    phone: "010-241 4822",
+    hours: "10am - 10pm",
+    mapUrl: "",
+    mapQuery: "SP Sipitang Commercial Centre Sipitang",
+  },
+  // --- Kota Belud ---
+  {
+    id: "kota-belud",
+    name: "SP Accessories Kota Belud",
+    shortName: "Kota Belud",
+    area: "kota-belud",
+    address: "9G, Suria Commercial Centre, 89150 Kota Belud, Sabah",
+    phone: "088-973 909",
+    hours: "10am - 10pm",
+    mapUrl: "",
+    mapQuery: "Smart Phone Accessories Suria Commercial Centre Kota Belud",
+  },
 ];
 
 export const BRANCH_AREAS: BranchArea[] = [
@@ -218,6 +302,12 @@ export const BRANCH_AREAS: BranchArea[] = [
   { id: "telipok", label: "Telipok", branches: ALL_BRANCHES.filter(b => b.area === "telipok") },
   { id: "sandakan", label: "Sandakan", branches: ALL_BRANCHES.filter(b => b.area === "sandakan") },
   { id: "kudat", label: "Kudat", branches: ALL_BRANCHES.filter(b => b.area === "kudat") },
+  { id: "keningau", label: "Keningau", branches: ALL_BRANCHES.filter(b => b.area === "keningau") },
+  { id: "beaufort", label: "Beaufort", branches: ALL_BRANCHES.filter(b => b.area === "beaufort") },
+  { id: "papar", label: "Papar", branches: ALL_BRANCHES.filter(b => b.area === "papar") },
+  { id: "tuaran", label: "Tuaran", branches: ALL_BRANCHES.filter(b => b.area === "tuaran") },
+  { id: "sipitang", label: "Sipitang", branches: ALL_BRANCHES.filter(b => b.area === "sipitang") },
+  { id: "kota-belud", label: "Kota Belud", branches: ALL_BRANCHES.filter(b => b.area === "kota-belud") },
 ];
 
 export const ALL_BRANCHES_FLAT = ALL_BRANCHES;
