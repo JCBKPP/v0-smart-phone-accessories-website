@@ -23,6 +23,7 @@ const SLIDES = [
 export function HeroCarousel() {
   const [current, setCurrent] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
   const { t } = useLanguage();
 
   const next = useCallback(() => {
@@ -32,6 +33,20 @@ export function HeroCarousel() {
   const prev = useCallback(() => {
     setCurrent((prev) => (prev - 1 + SLIDES.length) % SLIDES.length);
   }, []);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.touches[0].clientX);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStart === null) return;
+    const diff = touchStart - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) next();
+      else prev();
+    }
+    setTouchStart(null);
+  };
 
   useEffect(() => {
     if (isPaused) return;
@@ -44,6 +59,8 @@ export function HeroCarousel() {
       className="relative w-full overflow-hidden bg-foreground"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
       aria-roledescription="carousel"
       aria-label="Store photos"
     >
@@ -87,24 +104,6 @@ export function HeroCarousel() {
           </motion.p>
         </div>
       </div>
-
-      {/* Navigation arrows */}
-      <button
-        type="button"
-        onClick={prev}
-        className="absolute left-3 sm:left-4 top-1/2 z-20 -translate-y-1/2 flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-full bg-background/10 text-background backdrop-blur-sm hover:bg-background/25 transition-all duration-300 min-h-[44px] min-w-[44px]"
-        aria-label="Previous slide"
-      >
-        <ChevronLeft className="h-4 w-4 sm:h-5 sm:w-5" />
-      </button>
-      <button
-        type="button"
-        onClick={next}
-        className="absolute right-3 sm:right-4 top-1/2 z-20 -translate-y-1/2 flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-full bg-background/10 text-background backdrop-blur-sm hover:bg-background/25 transition-all duration-300 min-h-[44px] min-w-[44px]"
-        aria-label="Next slide"
-      >
-        <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5" />
-      </button>
 
       {/* Dots */}
       <div className="absolute bottom-4 sm:bottom-6 left-1/2 z-20 -translate-x-1/2 flex items-center gap-1.5">
