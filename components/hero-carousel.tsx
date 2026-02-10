@@ -93,7 +93,7 @@ export function HeroCarousel() {
       <button
         type="button"
         onClick={prev}
-        className="absolute left-3 sm:left-4 top-1/2 z-20 -translate-y-1/2 flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-full bg-background/20 text-background backdrop-blur-sm hover:bg-background/40 transition-all duration-300 min-h-[44px] min-w-[44px]"
+        className="absolute left-3 sm:left-4 top-1/2 z-20 -translate-y-1/2 flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-full bg-background/10 text-background backdrop-blur-sm hover:bg-background/25 transition-all duration-300 min-h-[44px] min-w-[44px]"
         aria-label="Previous slide"
       >
         <ChevronLeft className="h-4 w-4 sm:h-5 sm:w-5" />
@@ -101,7 +101,7 @@ export function HeroCarousel() {
       <button
         type="button"
         onClick={next}
-        className="absolute right-3 sm:right-4 top-1/2 z-20 -translate-y-1/2 flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-full bg-background/20 text-background backdrop-blur-sm hover:bg-background/40 transition-all duration-300 min-h-[44px] min-w-[44px]"
+        className="absolute right-3 sm:right-4 top-1/2 z-20 -translate-y-1/2 flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-full bg-background/10 text-background backdrop-blur-sm hover:bg-background/25 transition-all duration-300 min-h-[44px] min-w-[44px]"
         aria-label="Next slide"
       >
         <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5" />

@@ -44,31 +44,6 @@ export function SiteFooter() {
               </Link>
             ))}
           </nav>
-
-          {/* Contact */}
-          <div className="text-sm text-muted-foreground">
-            <p className="mb-1 text-xs">{t("visitOurStores")}</p>
-            <div className="flex flex-wrap gap-x-3 gap-y-1">
-              <a
-                href="tel:0167434011"
-                className="hover:text-primary transition-colors"
-              >
-                016-743 4011
-              </a>
-              <a
-                href="tel:0168784311"
-                className="hover:text-primary transition-colors"
-              >
-                016-878 4311
-              </a>
-              <a
-                href="tel:0169375611"
-                className="hover:text-primary transition-colors"
-              >
-                016-937 5611
-              </a>
-            </div>
-          </div>
         </div>
 
         {/* Copyright */}

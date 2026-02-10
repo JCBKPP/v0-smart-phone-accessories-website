@@ -7,9 +7,8 @@ export const translations = {
     whatWeSell: "What We Sell",
     findUs: "Find Us",
     about: "About Us",
-    searchPlaceholder: "Search categories...",
 
-    // Hero
+    // Hero -- slogan always in English
     heroTagline: "Better In Your Life",
     heroSubtitle: "Your trusted source for quality phone accessories in Sabah, Malaysia.",
 
@@ -45,8 +44,14 @@ export const translations = {
     viewLocation: "View Location",
 
     // Footer
-    visitOurStores: "Visit our stores",
-    copyright: "2025 Smart Phone Accessories Sdn Bhd",
+    copyright: "Smart Phone Accessories Sdn Bhd | @",
+
+    // Social drawer
+    connectWithUs: "Connect With Us",
+    facebook: "Facebook",
+    whatsapp: "WhatsApp",
+    liveAgent: "Live Agent",
+    comingSoon: "Coming Soon",
 
     // Find Us
     findUsTitle: "Find Us",
@@ -88,10 +93,9 @@ export const translations = {
     whatWeSell: "Apa Yang Kami Jual",
     findUs: "Cari Kami",
     about: "Tentang Kami",
-    searchPlaceholder: "Cari kategori...",
 
-    // Hero
-    heroTagline: "Lebih Baik Dalam Hidup Anda",
+    // Hero -- slogan always in English
+    heroTagline: "Better In Your Life",
     heroSubtitle: "Sumber dipercayai anda untuk aksesori telefon berkualiti di Sabah, Malaysia.",
 
     // What We Sell
@@ -126,8 +130,14 @@ export const translations = {
     viewLocation: "Lihat Lokasi",
 
     // Footer
-    visitOurStores: "Lawat kedai kami",
-    copyright: "2025 Smart Phone Accessories Sdn Bhd",
+    copyright: "Smart Phone Accessories Sdn Bhd | @",
+
+    // Social drawer
+    connectWithUs: "Hubungi Kami",
+    facebook: "Facebook",
+    whatsapp: "WhatsApp",
+    liveAgent: "Ejen Langsung",
+    comingSoon: "Akan Datang",
 
     // Find Us
     findUsTitle: "Cari Kami",
@@ -137,7 +147,7 @@ export const translations = {
     needHelpSubtitle: "Hubungi kami dan kami akan membimbing anda ke kedai kami.",
 
     // About
-    aboutHeroTitle: "Lebih Baik Dalam Hidup Anda",
+    aboutHeroTitle: "Better In Your Life",
     aboutHeroSubtitle: "Smart Phone Accessories Sdn Bhd -- peruncit aksesori telefon dipercayai anda di Sabah, Malaysia.",
     storyP1: "Kami bermula dengan misi yang mudah: menjadikan aksesori telefon berkualiti mudah diakses dan berpatutan untuk semua orang di Kota Kinabalu. Bermula dari kedai pertama kami, kami dengan cepat memperoleh kepercayaan melalui produk yang cemerlang dan perkhidmatan yang tulen.",
     storyP2: "Hari ini kami mengendalikan tiga cawangan -- Inanam Business Centre, City Prade di pusat bandar, dan Karamunsing Capital -- setiap satu mempunyai pilihan aksesori yang komprehensif untuk semua jenama telefon pintar utama.",

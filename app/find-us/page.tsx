@@ -80,13 +80,19 @@ export default function FindUsPage() {
               href="tel:0167434011"
               className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-accent transition-colors min-h-[44px]"
             >
-              Call Inanam: 016-743 4011
+              Inanam: 016-743 4011
             </a>
             <a
               href="tel:0168784311"
               className="inline-flex items-center gap-2 rounded-full border border-border text-foreground px-6 py-2.5 text-sm font-semibold hover:bg-secondary transition-all min-h-[44px]"
             >
-              Call City Prade: 016-878 4311
+              City Prade: 016-878 4311
+            </a>
+            <a
+              href="tel:0169375611"
+              className="inline-flex items-center gap-2 rounded-full border border-border text-foreground px-6 py-2.5 text-sm font-semibold hover:bg-secondary transition-all min-h-[44px]"
+            >
+              Karamunsing: 016-937 5611
             </a>
           </div>
         </div>

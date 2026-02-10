@@ -163,16 +163,16 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             {[
               {
-                src: "/images/store-team.jpg",
-                alt: "SP Accessories store interior",
+                src: "/images/store-karamunsing.webp",
+                alt: "SP Accessories Karamunsing branch storefront",
               },
               {
-                src: "/images/gallery-1.jpg",
-                alt: "Phone accessories display",
+                src: "/images/store-inanam.webp",
+                alt: "SP Accessories Inanam branch storefront",
               },
               {
-                src: "/images/gallery-2.jpg",
-                alt: "Accessories wall display",
+                src: "/images/store-cityprade.jpg",
+                alt: "SP Accessories City Prade branch storefront",
               },
             ].map((img) => (
               <motion.div

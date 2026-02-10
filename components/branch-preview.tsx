@@ -77,12 +77,22 @@ export function BranchPreview() {
               <h3 className="text-lg font-semibold text-foreground">
                 {branch.name}
               </h3>
-              <a
-                href={`tel:${branch.phone.replace(/[^0-9+]/g, "")}`}
-                className="text-base font-semibold text-primary hover:text-accent transition-colors"
-              >
-                {branch.phone}
-              </a>
+              <div className="flex items-center gap-3">
+                <a
+                  href={`tel:${branch.phone.replace(/[^0-9+]/g, "")}`}
+                  className="text-base font-semibold text-primary hover:text-accent transition-colors"
+                >
+                  {branch.phone}
+                </a>
+                <a
+                  href={`https://wa.me/60${branch.phone.replace(/[^0-9]/g, "").replace(/^0/, "")}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs text-[#25D366] hover:underline font-medium"
+                >
+                  WhatsApp
+                </a>
+              </div>
               <p className="text-sm text-muted-foreground leading-relaxed flex-1">
                 {branch.address}
               </p>
