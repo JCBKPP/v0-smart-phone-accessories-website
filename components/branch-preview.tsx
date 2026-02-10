@@ -103,7 +103,7 @@ export function BranchPreview() {
         >
           <Link
             href="/find-us"
-            className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-2.5 text-sm font-semibold text-foreground hover:bg-secondary transition-all duration-200 min-h-[44px] group"
+            className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-accent transition-all duration-200 min-h-[44px] group"
           >
             {t("findOurStores")}
             <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
