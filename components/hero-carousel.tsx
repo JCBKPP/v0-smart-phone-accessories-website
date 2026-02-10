@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useLanguage } from "@/lib/language-context";
 
