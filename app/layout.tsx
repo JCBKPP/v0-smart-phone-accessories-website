@@ -37,7 +37,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#991B1B",
+  themeColor: "#c41e2a",
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
@@ -50,7 +50,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} font-sans antialiased`}>
+      <body className={`${inter.variable} font-sans antialiased red-slash-bg`}>
         <LanguageProvider>
           <SiteHeader />
           <main>{children}</main>

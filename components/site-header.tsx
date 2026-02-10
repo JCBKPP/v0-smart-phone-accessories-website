@@ -21,7 +21,7 @@ export function SiteHeader() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/50 bg-background/90 backdrop-blur-md">
+    <header className="sticky top-0 z-50 w-full border-b border-border/30 bg-background/70 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-3 px-4 sm:px-6 lg:px-8">
         {/* Logo */}
         <Link href="/" className="flex shrink-0 items-center group">
@@ -79,7 +79,7 @@ export function SiteHeader() {
 
       {/* Mobile menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-background border-t border-border/50">
+        <div className="md:hidden bg-background/90 backdrop-blur-xl border-t border-border/30">
           <nav className="flex flex-col py-2" aria-label="Mobile navigation">
             {NAV_LINKS.map((link) => {
               const base = link.href.split("#")[0];
