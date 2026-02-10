@@ -99,7 +99,7 @@ export function FaqSection() {
             href="/faq"
             className="text-xs text-muted-foreground hover:text-primary hover:underline transition-colors"
           >
-            {t("faqTitle")} {">"}
+            {t("viewAllFaq")} {">"}
           </Link>
         </div>
       </div>
