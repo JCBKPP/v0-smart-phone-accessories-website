@@ -1,45 +1,59 @@
-import type { Metadata } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
-import { Analytics } from '@vercel/analytics/next'
-import './globals.css'
+import React from "react"
+import type { Metadata, Viewport } from "next";
+import { Inter } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
+import { SiteHeader } from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer";
+import "./globals.css";
 
-const _geist = Geist({ subsets: ["latin"] });
-const _geistMono = Geist_Mono({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
-  generator: 'v0.app',
-  icons: {
-    icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
-    ],
-    apple: '/apple-icon.png',
+  title: {
+    default: "Smart Phone Accessories Sdn Bhd | Better In Your Life",
+    template: "%s | Smart Phone Accessories",
   },
-}
+  description:
+    "Your trusted source for quality phone accessories in Sabah, Malaysia. Phone cases, screen protectors, charging cables, power banks, and more across 3 locations in Kota Kinabalu.",
+  keywords: [
+    "phone accessories",
+    "Kota Kinabalu",
+    "Sabah",
+    "phone cases",
+    "screen protectors",
+    "charging cables",
+    "power banks",
+    "Malaysia",
+  ],
+  openGraph: {
+    title: "Smart Phone Accessories Sdn Bhd",
+    description:
+      "Quality phone accessories across 3 branches in Sabah, Malaysia.",
+    type: "website",
+    locale: "en_MY",
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#1a56db",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
   return (
     <html lang="en">
-      <body className={`font-sans antialiased`}>
-        {children}
+      <body className={`${inter.variable} font-sans antialiased`}>
+        <SiteHeader />
+        <main>{children}</main>
+        <SiteFooter />
         <Analytics />
       </body>
     </html>
-  )
+  );
 }
