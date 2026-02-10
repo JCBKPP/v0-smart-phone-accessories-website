@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
-import { MapPin, Phone, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
 
 const BRANCHES = [
   {
@@ -19,56 +22,70 @@ const BRANCHES = [
   },
 ];
 
+const containerVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.1 } },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, x: -30 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.4, ease: "easeOut" } },
+};
+
 export function BranchPreview() {
   return (
-    <section className="py-16 sm:py-20 lg:py-24 bg-secondary">
+    <section className="py-20 md:py-32 bg-secondary">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-2xl sm:text-3xl font-bold text-foreground text-balance">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground text-balance">
             Visit Our Stores
           </h2>
-          <p className="mt-3 text-muted-foreground max-w-lg mx-auto leading-relaxed">
-            We have 3 conveniently located branches across Kota Kinabalu, Sabah. Drop by anytime!
+          <p className="mt-4 text-muted-foreground max-w-lg mx-auto leading-relaxed">
+            3 convenient locations across Kota Kinabalu, Sabah.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={containerVariants}
+          className="grid grid-cols-1 sm:grid-cols-3 gap-5"
+        >
           {BRANCHES.map((branch) => (
-            <div
+            <motion.div
               key={branch.name}
-              className="rounded-xl border border-border bg-card p-6 flex flex-col gap-4 transition-shadow hover:shadow-md"
+              variants={itemVariants}
+              className="rounded-2xl border border-border bg-background p-8 flex flex-col gap-4 transition-all duration-300 hover:shadow-lg hover:border-muted-foreground/30"
             >
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
-                <MapPin className="h-5 w-5" />
-              </div>
-              <div className="flex-1">
-                <h3 className="font-semibold text-card-foreground">
-                  {branch.name}
-                </h3>
-                <p className="mt-1.5 text-sm text-muted-foreground leading-relaxed">
-                  {branch.address}
-                </p>
-              </div>
+              <h3 className="text-2xl font-semibold text-foreground">
+                {branch.name}
+              </h3>
               <a
                 href={`tel:${branch.phone.replace(/[^0-9+]/g, "")}`}
-                className="flex items-center gap-2 text-sm font-medium text-primary hover:underline min-h-[44px]"
+                className="text-lg font-semibold text-foreground hover:text-primary transition-colors"
               >
-                <Phone className="h-4 w-4" />
                 {branch.phone}
               </a>
-            </div>
+              <p className="text-sm text-muted-foreground leading-relaxed flex-1">
+                {branch.address}
+              </p>
+              <Link
+                href="/find-us"
+                className="text-sm font-medium text-primary hover:text-accent transition-colors group inline-flex items-center gap-1"
+              >
+                {"View Location"}
+                <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-1" />
+              </Link>
+            </motion.div>
           ))}
-        </div>
-
-        <div className="mt-10 text-center">
-          <Link
-            href="/find-us"
-            className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:bg-accent transition-colors min-h-[44px]"
-          >
-            View All Locations
-            <ArrowRight className="h-4 w-4" />
-          </Link>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

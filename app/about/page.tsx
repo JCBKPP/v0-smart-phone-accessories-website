@@ -1,21 +1,10 @@
-import type { Metadata } from "next";
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
-import {
-  MapPin,
-  ShoppingBag,
-  ShieldCheck,
-  Headset,
-  BadgeDollarSign,
-  ArrowRight,
-} from "lucide-react";
+import { MapPin, ShoppingBag, ShieldCheck, Headset, BadgeDollarSign, ArrowRight } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
-
-export const metadata: Metadata = {
-  title: "About Us",
-  description:
-    "Learn about Smart Phone Accessories Sdn Bhd -- your trusted phone accessories retailer in Sabah, Malaysia with 3 branches in Kota Kinabalu.",
-};
+import { motion } from "framer-motion";
 
 interface ValueItem {
   icon: LucideIcon;
@@ -26,195 +15,196 @@ interface ValueItem {
 const VALUES: ValueItem[] = [
   {
     icon: MapPin,
-    title: "Multiple Locations",
-    description:
-      "3 conveniently located branches across Kota Kinabalu, making it easy for you to find us wherever you are.",
+    title: "Convenient Locations",
+    description: "Three stores across Kota Kinabalu means you are never far from quality accessories.",
   },
   {
     icon: ShoppingBag,
     title: "Wide Product Range",
-    description:
-      "From phone cases and screen protectors to power banks and earphones, we carry everything your smartphone needs.",
+    description: "From cases to chargers, audio to storage -- accessories for all major phone brands.",
   },
   {
     icon: ShieldCheck,
-    title: "Quality Products",
-    description:
-      "We source only reliable, tested accessories to ensure you get the best value and long-lasting performance.",
+    title: "Quality Guaranteed",
+    description: "We carefully select every product, ensuring reliable accessories that last.",
   },
   {
     icon: Headset,
     title: "Expert Service",
-    description:
-      "Our knowledgeable team is always ready to help you find the perfect accessory for your device.",
+    description: "Our knowledgeable staff help you find the perfect accessories for your needs.",
   },
   {
     icon: BadgeDollarSign,
     title: "Competitive Pricing",
-    description:
-      "Great quality at fair prices. We keep our costs competitive so you get the best deals in Sabah.",
+    description: "Great products at fair prices -- quality accessories accessible to everyone.",
   },
 ];
 
-const GALLERY_IMAGES = [
-  { src: "/images/store-team.jpg", alt: "Smart Phone Accessories store interior" },
-  { src: "/images/gallery-1.jpg", alt: "Phone accessories display" },
-  { src: "/images/gallery-2.jpg", alt: "Accessories wall display" },
-];
+const staggerContainer = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.1 } },
+};
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } },
+};
 
 export default function AboutPage() {
   return (
     <>
-      {/* Hero */}
-      <section className="relative bg-foreground py-20 sm:py-28 lg:py-32 overflow-hidden">
-        <Image
-          src="/images/about-hero.jpg"
-          alt="Smart Phone Accessories store"
-          fill
-          className="object-cover opacity-30"
-          priority
-          sizes="100vw"
-        />
-        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-sm font-semibold uppercase tracking-widest text-primary mb-4">
-            About Us
-          </p>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-primary-foreground text-balance leading-tight">
+      {/* Hero - white, centered, minimal */}
+      <section className="py-20 md:py-32 bg-background">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="text-4xl md:text-5xl font-bold text-foreground text-balance"
+          >
             Better In Your Life
-          </h1>
-          <p className="mt-5 text-primary-foreground/70 max-w-xl mx-auto text-base sm:text-lg leading-relaxed">
-            Smart Phone Accessories Sdn Bhd is dedicated to providing the best smartphone accessories experience in Sabah, Malaysia.
-          </p>
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }}
+            className="mt-4 text-xl text-muted-foreground max-w-xl mx-auto leading-relaxed"
+          >
+            Smart Phone Accessories Sdn Bhd -- your trusted phone accessories retailer in Sabah, Malaysia.
+          </motion.p>
         </div>
       </section>
 
       {/* Story */}
-      <section className="py-16 sm:py-20 lg:py-24 bg-background">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-center">
-            <div className="flex-1">
-              <p className="text-xs font-semibold uppercase tracking-wider text-primary mb-3">
-                Our Story
-              </p>
-              <h2 className="text-2xl sm:text-3xl font-bold text-foreground text-balance">
-                From One Store to Three, Serving Sabah
-              </h2>
-              <div className="mt-5 flex flex-col gap-4 text-muted-foreground leading-relaxed">
-                <p>
-                  Smart Phone Accessories Sdn Bhd began with a simple mission: to make quality phone accessories accessible and affordable for everyone in Kota Kinabalu. Starting from our first shop, we quickly earned the trust of our customers through excellent products and genuine service.
-                </p>
-                <p>
-                  Today, we operate three branches across the city -- at Inanam Business Centre, City Prade in the heart of downtown, and Karamunsing Capital. Each store carries a comprehensive selection of accessories for all major smartphone brands.
-                </p>
-                <p>
-                  Our tagline, "Better In Your Life," reflects our commitment to enhancing your everyday experience with the right accessories. Whether you need a durable case, a fast-charging cable, or the latest wireless earbuds, we are here to help.
-                </p>
-              </div>
-            </div>
-            <div className="flex-1 w-full">
-              <div className="relative aspect-[4/3] rounded-xl overflow-hidden shadow-lg">
-                <Image
-                  src="/images/hero-1.jpg"
-                  alt="Smart Phone Accessories store interior"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
-              </div>
-            </div>
-          </div>
+      <section className="pb-20 md:pb-32 bg-background">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="flex flex-col gap-6 text-lg leading-relaxed text-muted-foreground"
+          >
+            <p>
+              We began with a simple mission: to make quality phone accessories accessible and affordable for everyone in Kota Kinabalu. Starting from our first shop, we quickly earned trust through excellent products and genuine service.
+            </p>
+            <p>
+              Today we operate three branches -- Inanam Business Centre, City Prade downtown, and Karamunsing Capital -- each carrying a comprehensive selection of accessories for all major smartphone brands.
+            </p>
+          </motion.div>
         </div>
       </section>
 
-      {/* Why Choose Us */}
-      <section className="py-16 sm:py-20 lg:py-24 bg-secondary">
+      {/* Why Choose Us - minimal grid, no cards */}
+      <section className="py-20 md:py-32 bg-background">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <p className="text-xs font-semibold uppercase tracking-wider text-primary mb-3">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground text-balance">
               Why Choose Us
-            </p>
-            <h2 className="text-2xl sm:text-3xl font-bold text-foreground text-balance">
-              What Sets Us Apart
             </h2>
-            <p className="mt-3 text-muted-foreground max-w-lg mx-auto leading-relaxed">
-              We go beyond just selling accessories -- we provide an experience built on trust, quality, and convenience.
-            </p>
-          </div>
+          </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+            className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8"
+          >
             {VALUES.map((item) => {
               const Icon = item.icon;
               return (
-                <div
+                <motion.div
                   key={item.title}
-                  className="rounded-xl border border-border bg-card p-6 flex flex-col gap-4 transition-shadow hover:shadow-md"
+                  variants={fadeUp}
+                  className="text-center"
                 >
-                  <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-primary/10 text-primary">
-                    <Icon className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-card-foreground">
-                      {item.title}
-                    </h3>
-                    <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
-                      {item.description}
-                    </p>
-                  </div>
-                </div>
+                  <Icon className="h-8 w-8 text-foreground mx-auto mb-4" strokeWidth={1.5} />
+                  <h3 className="text-lg font-semibold text-foreground mb-2">
+                    {item.title}
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    {item.description}
+                  </p>
+                </motion.div>
               );
             })}
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Gallery */}
-      <section className="py-16 sm:py-20 lg:py-24 bg-background">
+      <section className="py-20 md:py-32 bg-secondary">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <p className="text-xs font-semibold uppercase tracking-wider text-primary mb-3">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground text-balance">
               Our Stores
-            </p>
-            <h2 className="text-2xl sm:text-3xl font-bold text-foreground text-balance">
-              A Look Inside
             </h2>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            {GALLERY_IMAGES.map((img) => (
-              <div
+            {[
+              { src: "/images/store-team.jpg", alt: "SP Accessories store interior" },
+              { src: "/images/gallery-1.jpg", alt: "Phone accessories display" },
+              { src: "/images/gallery-2.jpg", alt: "Accessories wall display" },
+            ].map((img) => (
+              <motion.div
                 key={img.src}
-                className="relative aspect-[4/3] rounded-xl overflow-hidden group"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
+                className="relative aspect-[4/3] rounded-xl overflow-hidden"
               >
                 <Image
                   src={img.src || "/placeholder.svg"}
                   alt={img.alt}
                   fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="object-cover"
                   sizes="(max-width: 640px) 100vw, 33vw"
                   loading="lazy"
                 />
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-16 sm:py-20 bg-foreground text-center">
+      <section className="py-20 md:py-28 bg-background text-center">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl font-bold text-primary-foreground text-balance">
-            Ready to Visit?
-          </h2>
-          <p className="mt-3 text-primary-foreground/70 max-w-md mx-auto leading-relaxed">
-            Find the nearest branch and drop by today. Our friendly team is ready to help you find the perfect accessories.
-          </p>
-          <Link
-            href="/find-us"
-            className="mt-8 inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:bg-accent transition-colors min-h-[44px]"
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
           >
-            Find Our Stores
-            <ArrowRight className="h-4 w-4" />
-          </Link>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground text-balance">
+              Visit Us Today
+            </h2>
+            <p className="mt-4 text-muted-foreground max-w-md mx-auto leading-relaxed">
+              Find the perfect accessories for your device at any of our three locations.
+            </p>
+            <Link
+              href="/find-us"
+              className="mt-8 inline-flex items-center gap-2 rounded-full bg-primary px-8 py-3 text-sm font-semibold text-primary-foreground hover:bg-accent transition-colors min-h-[44px]"
+            >
+              Find Our Stores
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </motion.div>
         </div>
       </section>
     </>

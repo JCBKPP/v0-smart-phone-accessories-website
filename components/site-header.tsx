@@ -6,7 +6,6 @@ import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { SmartSearch } from "@/components/smart-search";
 import { SpLogo } from "@/components/sp-logo";
-import { cn } from "@/lib/utils";
 
 const NAV_LINKS = [
   { href: "/", label: "Home" },
@@ -20,23 +19,18 @@ export function SiteHeader() {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/80">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
+    <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/80 backdrop-blur-md">
+      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
         {/* Logo */}
-        <Link href="/" className="flex shrink-0 items-center gap-2 group">
-          <SpLogo size={40} className="transition-transform group-hover:scale-105" />
-          <div className="hidden sm:block">
-            <p className="text-sm font-bold leading-tight text-foreground tracking-tight">
-              Smart Phone
-            </p>
-            <p className="text-xs text-muted-foreground leading-tight">
-              Accessories
-            </p>
-          </div>
+        <Link href="/" className="flex shrink-0 items-center gap-2.5 group">
+          <SpLogo size={38} className="transition-transform duration-300 group-hover:scale-105" />
+          <span className="hidden sm:block text-lg font-semibold text-foreground tracking-tight">
+            SP Accessories
+          </span>
         </Link>
 
         {/* Search - desktop */}
-        <div className="hidden md:block flex-1 max-w-md mx-4">
+        <div className="hidden md:block flex-1 max-w-md mx-8">
           <SmartSearch />
         </div>
 
@@ -51,12 +45,11 @@ export function SiteHeader() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={cn(
-                  "px-3 py-2 text-sm font-medium rounded-md transition-colors",
+                className={`px-3 py-2 text-sm font-medium transition-colors duration-200 ${
                   isActive
-                    ? "text-primary bg-primary/10"
-                    : "text-muted-foreground hover:text-foreground hover:bg-secondary"
-                )}
+                    ? "text-foreground font-semibold"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
               >
                 {link.label}
               </Link>
@@ -67,26 +60,22 @@ export function SiteHeader() {
         {/* Mobile menu toggle */}
         <button
           type="button"
-          className="inline-flex md:hidden items-center justify-center rounded-md p-2 text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
+          className="inline-flex md:hidden items-center justify-center p-2 text-muted-foreground hover:text-foreground transition-colors"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
           aria-expanded={mobileMenuOpen}
         >
-          {mobileMenuOpen ? (
-            <X className="h-5 w-5" />
-          ) : (
-            <Menu className="h-5 w-5" />
-          )}
+          {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu - light, clean */}
       {mobileMenuOpen && (
-        <div className="border-t border-border md:hidden bg-card">
-          <div className="px-4 py-3">
+        <div className="md:hidden bg-background border-t border-border/60">
+          <div className="px-4 py-4">
             <SmartSearch />
           </div>
-          <nav className="flex flex-col pb-3" aria-label="Mobile navigation">
+          <nav className="flex flex-col pb-4" aria-label="Mobile navigation">
             {NAV_LINKS.map((link) => {
               const isActive =
                 link.href === "/"
@@ -97,12 +86,9 @@ export function SiteHeader() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={cn(
-                    "px-4 py-3 text-sm font-medium transition-colors",
-                    isActive
-                      ? "text-primary bg-primary/5"
-                      : "text-muted-foreground hover:text-foreground hover:bg-secondary"
-                  )}
+                  className={`px-4 py-4 text-sm font-medium transition-colors ${
+                    isActive ? "text-foreground font-semibold" : "text-muted-foreground hover:text-foreground"
+                  }`}
                 >
                   {link.label}
                 </Link>

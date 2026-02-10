@@ -13,6 +13,7 @@ import {
   HardDrive,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import { motion } from "framer-motion";
 
 interface Category {
   name: string;
@@ -33,46 +34,64 @@ const CATEGORIES: Category[] = [
   { name: "Storage", icon: HardDrive, description: "Memory cards & adapters" },
 ];
 
+const containerVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.1 } },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } },
+};
+
 export function CategoryGrid() {
   return (
-    <section id="accessories" className="py-16 sm:py-20 lg:py-24 bg-background">
+    <section id="accessories" className="py-20 md:py-32 bg-background">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-2xl sm:text-3xl font-bold text-foreground text-balance">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground text-balance">
             Browse Accessories
           </h2>
-          <p className="mt-3 text-muted-foreground max-w-lg mx-auto leading-relaxed">
-            Find the perfect accessory for your smartphone. We carry a wide range of quality products at competitive prices.
+          <p className="mt-4 text-muted-foreground max-w-lg mx-auto leading-relaxed">
+            Find the perfect accessory for your smartphone at competitive prices.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 lg:gap-5">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={containerVariants}
+          className="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-6"
+        >
           {CATEGORIES.map((category) => {
             const Icon = category.icon;
             return (
-              <button
+              <motion.button
                 key={category.name}
                 type="button"
-                className="group flex flex-col items-center gap-3 rounded-xl border border-border bg-card p-5 sm:p-6 text-center transition-all hover:border-primary/30 hover:shadow-md hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none min-h-[44px]"
+                variants={itemVariants}
+                className="group flex flex-col items-center gap-4 p-6 text-center cursor-pointer focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none rounded-2xl transition-colors"
               >
-                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
-                  <Icon className="h-6 w-6" />
-                </div>
+                <Icon className="h-12 w-12 md:h-14 md:w-14 text-foreground transition-transform duration-300 group-hover:scale-110" strokeWidth={1.5} />
                 <div>
-                  <h3 className="text-sm font-semibold text-card-foreground">
+                  <h3 className="text-base md:text-lg font-semibold text-foreground transition-colors duration-200 group-hover:text-primary">
                     {category.name}
                   </h3>
-                  <p className="mt-1 text-xs text-muted-foreground hidden sm:block">
+                  <p className="mt-1 text-sm text-muted-foreground hidden sm:block">
                     {category.description}
                   </p>
                 </div>
-                <span className="text-xs font-medium text-primary opacity-0 group-hover:opacity-100 transition-opacity">
-                  Browse
-                </span>
-              </button>
+              </motion.button>
             );
           })}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -10,8 +10,8 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
   title: {
-    default: "Smart Phone Accessories Sdn Bhd | Better In Your Life",
-    template: "%s | Smart Phone Accessories",
+    default: "SP Accessories | Better In Your Life",
+    template: "%s | SP Accessories",
   },
   description:
     "Your trusted source for quality phone accessories in Sabah, Malaysia. Phone cases, screen protectors, charging cables, power banks, and more across 3 locations in Kota Kinabalu.",
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     "Malaysia",
   ],
   openGraph: {
-    title: "Smart Phone Accessories Sdn Bhd",
+    title: "SP Accessories | Smart Phone Accessories Sdn Bhd",
     description:
       "Quality phone accessories across 3 branches in Sabah, Malaysia.",
     type: "website",

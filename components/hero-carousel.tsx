@@ -2,28 +2,13 @@
 
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
 
 const SLIDES = [
-  {
-    image: "/images/hero-1.jpg",
-    title: "Your One-Stop Phone Accessories Shop",
-    subtitle: "Quality accessories for every smartphone. Visit any of our 3 branches in Sabah.",
-    cta: { label: "Find a Branch", href: "/find-us" },
-  },
-  {
-    image: "/images/hero-2.jpg",
-    title: "Premium Accessories, Affordable Prices",
-    subtitle: "From cases to cables, power banks to earphones -- we have everything you need.",
-    cta: { label: "Browse Categories", href: "/#accessories" },
-  },
-  {
-    image: "/images/hero-3.jpg",
-    title: "Better In Your Life",
-    subtitle: "Trusted by thousands of customers across Kota Kinabalu since day one.",
-    cta: { label: "About Us", href: "/about" },
-  },
+  { image: "/images/hero-1.jpg", alt: "SP Accessories storefront" },
+  { image: "/images/hero-2.jpg", alt: "Premium smartphone accessories" },
+  { image: "/images/hero-3.jpg", alt: "Wide range of phone accessories" },
 ];
 
 export function HeroCarousel() {
@@ -52,59 +37,36 @@ export function HeroCarousel() {
       aria-roledescription="carousel"
       aria-label="Featured promotions"
     >
-      <div className="relative h-[400px] sm:h-[480px] lg:h-[560px]">
-        {SLIDES.map((slide, index) => (
-          <div
-            key={slide.title}
-            className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
-              index === current ? "opacity-100 z-10" : "opacity-0 z-0"
-            }`}
+      <div className="relative h-[70vh] md:h-[75vh]">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={current}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.7, ease: "easeInOut" }}
+            className="absolute inset-0"
             role="group"
             aria-roledescription="slide"
-            aria-label={`Slide ${index + 1} of ${SLIDES.length}`}
-            aria-hidden={index !== current}
+            aria-label={`Slide ${current + 1} of ${SLIDES.length}`}
           >
             <Image
-              src={slide.image || "/placeholder.svg"}
-              alt={slide.title}
+              src={SLIDES[current].image || "/placeholder.svg"}
+              alt={SLIDES[current].alt}
               fill
               className="object-cover"
-              priority={index === 0}
+              priority={current === 0}
               sizes="100vw"
             />
-            {/* Overlay */}
-            <div className="absolute inset-0 bg-foreground/60" />
-
-            {/* Content */}
-            <div className="absolute inset-0 z-10 flex items-center">
-              <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full">
-                <div className="max-w-lg">
-                  <h2
-                    className="text-3xl sm:text-4xl lg:text-5xl font-bold text-primary-foreground leading-tight text-balance"
-                  >
-                    {slide.title}
-                  </h2>
-                  <p className="mt-4 text-base sm:text-lg text-primary-foreground/80 leading-relaxed max-w-md">
-                    {slide.subtitle}
-                  </p>
-                  <Link
-                    href={slide.cta.href}
-                    className="mt-6 inline-flex items-center justify-center rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:bg-accent transition-colors min-h-[44px] min-w-[44px]"
-                  >
-                    {slide.cta.label}
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        ))}
+          </motion.div>
+        </AnimatePresence>
       </div>
 
-      {/* Navigation arrows */}
+      {/* Navigation arrows - fade in on hover */}
       <button
         type="button"
         onClick={prev}
-        className="absolute left-3 top-1/2 z-20 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full bg-card/20 text-primary-foreground backdrop-blur-sm hover:bg-card/40 transition-colors min-h-[44px] min-w-[44px]"
+        className="absolute left-4 top-1/2 z-20 -translate-y-1/2 flex h-12 w-12 items-center justify-center rounded-full bg-background/20 text-background backdrop-blur-sm opacity-0 hover:opacity-100 focus-visible:opacity-100 transition-all duration-300 min-h-[44px] min-w-[44px]"
         aria-label="Previous slide"
       >
         <ChevronLeft className="h-5 w-5" />
@@ -112,21 +74,23 @@ export function HeroCarousel() {
       <button
         type="button"
         onClick={next}
-        className="absolute right-3 top-1/2 z-20 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full bg-card/20 text-primary-foreground backdrop-blur-sm hover:bg-card/40 transition-colors min-h-[44px] min-w-[44px]"
+        className="absolute right-4 top-1/2 z-20 -translate-y-1/2 flex h-12 w-12 items-center justify-center rounded-full bg-background/20 text-background backdrop-blur-sm opacity-0 hover:opacity-100 focus-visible:opacity-100 transition-all duration-300 min-h-[44px] min-w-[44px]"
         aria-label="Next slide"
       >
         <ChevronRight className="h-5 w-5" />
       </button>
 
-      {/* Dots */}
-      <div className="absolute bottom-4 left-1/2 z-20 -translate-x-1/2 flex items-center gap-2">
+      {/* Dots - minimal pill indicator */}
+      <div className="absolute bottom-8 left-1/2 z-20 -translate-x-1/2 flex items-center gap-2">
         {SLIDES.map((slide, index) => (
           <button
-            key={slide.title}
+            key={slide.image}
             type="button"
             onClick={() => setCurrent(index)}
-            className={`h-2 rounded-full transition-all duration-300 min-h-[8px] ${
-              index === current ? "w-8 bg-primary" : "w-2 bg-primary-foreground/40 hover:bg-primary-foreground/60"
+            className={`rounded-full transition-all duration-300 ${
+              index === current
+                ? "h-2 w-8 bg-background"
+                : "h-2 w-2 bg-background/40 hover:bg-background/60"
             }`}
             aria-label={`Go to slide ${index + 1}`}
             aria-current={index === current ? "true" : undefined}
