@@ -87,7 +87,12 @@ export function HeroCarousel() {
       aria-label="Store photos"
     >
       {/* Responsive height: shorter on mobile, taller on desktop */}
-      <div className="relative h-[50vh] sm:h-[55vh] md:h-[60vh] lg:h-[65vh]">
+      <motion.div
+        initial={{ scale: 1.04, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+        className="relative h-[50vh] sm:h-[55vh] md:h-[60vh] lg:h-[65vh]"
+      >
         <AnimatePresence mode="wait">
           <motion.div
             key={current}
@@ -125,7 +130,7 @@ export function HeroCarousel() {
             {t("heroTagline")}
           </motion.p>
         </div>
-      </div>
+      </motion.div>
 
       {/* Dots */}
       <div className="absolute bottom-4 sm:bottom-6 left-1/2 z-20 -translate-x-1/2 flex items-center gap-1.5">

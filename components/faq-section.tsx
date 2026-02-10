@@ -68,10 +68,10 @@ export function FaqSection() {
     <section className="py-12 md:py-16 section-muted">
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.4, ease: "easeOut" }}
+          transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
           className="text-center mb-8"
         >
           <h2 className="text-2xl md:text-3xl font-bold text-foreground text-balance">
@@ -82,17 +82,30 @@ export function FaqSection() {
           </p>
         </motion.div>
 
-        <div className="rounded-xl glass-card px-5 md:px-6">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-40px" }}
+          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.08 } } }}
+          className="rounded-xl glass-card px-5 md:px-6"
+        >
           {FAQ_ITEMS.map((item, index) => (
-            <AccordionItem
+            <motion.div
               key={item.qKey}
-              question={t(item.qKey)}
-              answer={t(item.aKey)}
-              isOpen={openIndex === index}
-              onToggle={() => setOpenIndex(openIndex === index ? null : index)}
-            />
+              variants={{
+                hidden: { opacity: 0, y: 12 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] } },
+              }}
+            >
+              <AccordionItem
+                question={t(item.qKey)}
+                answer={t(item.aKey)}
+                isOpen={openIndex === index}
+                onToggle={() => setOpenIndex(openIndex === index ? null : index)}
+              />
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         <div className="text-center mt-4">
           <Link

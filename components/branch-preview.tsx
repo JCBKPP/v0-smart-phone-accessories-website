@@ -8,15 +8,16 @@ import { PREVIEW_BRANCHES } from "@/lib/branches";
 
 const containerVariants = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.08 } },
+  visible: { transition: { staggerChildren: 0.15 } },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 16 },
+  hidden: { opacity: 0, y: 28, scale: 0.97 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.35, ease: "easeOut" },
+    scale: 1,
+    transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] },
   },
 };
 
@@ -27,10 +28,10 @@ export function BranchPreview() {
     <section className="py-12 md:py-16 section-transparent">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.4, ease: "easeOut" }}
+          transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
           className="text-center mb-8"
         >
           <h2 className="text-2xl md:text-3xl font-bold text-foreground text-balance">

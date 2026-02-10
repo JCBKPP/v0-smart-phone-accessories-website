@@ -112,10 +112,10 @@ export function CategoryGrid() {
     <section id="what-we-sell" className="py-12 md:py-16 section-transparent">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.4, ease: "easeOut" }}
+          transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
           className="text-center mb-8"
         >
           <h2 className="text-2xl md:text-3xl font-bold text-foreground text-balance">
@@ -128,19 +128,39 @@ export function CategoryGrid() {
 
         {/* 2-row auto-sliding carousel */}
         <div className="flex flex-col gap-3">
-          <AutoSlideRow items={row1} direction="left" speed={0.4} />
-          <AutoSlideRow items={row2} direction="right" speed={0.4} />
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+          >
+            <AutoSlideRow items={row1} direction="left" speed={0.4} />
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.15 }}
+          >
+            <AutoSlideRow items={row2} direction="right" speed={0.4} />
+          </motion.div>
         </div>
 
         {/* View Album link */}
-        <div className="text-center mt-6">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4, delay: 0.3 }}
+          className="text-center mt-6"
+        >
           <Link
             href="/album"
             className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-accent transition-colors min-h-[44px]"
           >
             {t("viewAlbum")}
           </Link>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

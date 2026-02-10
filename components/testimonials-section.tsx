@@ -186,10 +186,10 @@ export function TestimonialsSection() {
     <section className="py-12 md:py-16 section-transparent">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.4, ease: "easeOut" }}
+          transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
           className="text-center mb-10"
         >
           <h2 className="text-2xl md:text-3xl font-bold text-foreground text-balance">
@@ -201,25 +201,32 @@ export function TestimonialsSection() {
         </motion.div>
 
         {/* Slow auto-sliding carousel */}
-        <div
-          ref={scrollRef}
-          className="flex gap-4 overflow-x-hidden"
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-          onTouchStart={() => setIsPaused(true)}
-          onTouchEnd={() => setTimeout(() => setIsPaused(false), 3000)}
-          onScroll={handleScroll}
-          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.15 }}
         >
-          {duplicated.map((review, i) => (
-            <div
-              key={`${review.name}-${i}`}
-              className="shrink-0 w-[280px] sm:w-[320px] md:w-[340px]"
-            >
-              <TestimonialCard review={review} />
-            </div>
-          ))}
-        </div>
+          <div
+            ref={scrollRef}
+            className="flex gap-4 overflow-x-hidden"
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+            onTouchStart={() => setIsPaused(true)}
+            onTouchEnd={() => setTimeout(() => setIsPaused(false), 3000)}
+            onScroll={handleScroll}
+            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+          >
+            {duplicated.map((review, i) => (
+              <div
+                key={`${review.name}-${i}`}
+                className="shrink-0 w-[280px] sm:w-[320px] md:w-[340px]"
+              >
+                <TestimonialCard review={review} />
+              </div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );

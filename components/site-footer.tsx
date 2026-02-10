@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { useLanguage } from "@/lib/language-context";
 
 export function SiteFooter() {
@@ -15,7 +16,13 @@ export function SiteFooter() {
   ];
 
   return (
-    <footer className="border-t border-border/30 section-muted">
+    <motion.footer
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true, margin: "-40px" }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      className="border-t border-border/30 section-muted"
+    >
       <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           {/* Logo */}
@@ -68,6 +75,6 @@ export function SiteFooter() {
           </p>
         </div>
       </div>
-    </footer>
+    </motion.footer>
   );
 }

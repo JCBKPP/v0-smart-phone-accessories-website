@@ -169,6 +169,34 @@ html {
   -webkit-backdrop-filter: blur(6px);
 }
 
+/* Scroll-triggered icon pulse for services */
+@keyframes icon-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.12); }
+}
+
+.animate-icon-pulse {
+  animation: icon-pulse 2s ease-in-out 0.5s 3;
+}
+
+/* Subtle float for CTA buttons */
+@keyframes subtle-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
+
+.animate-float {
+  animation: subtle-float 3s ease-in-out infinite;
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .animate-icon-pulse,
+  .animate-float {
+    animation: none !important;
+  }
+}
+
 .scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;
