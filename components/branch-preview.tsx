@@ -1,33 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, MapPin, Clock } from "lucide-react";
+import { ArrowRight, MapPin, Clock, Phone } from "lucide-react";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/lib/language-context";
-
-const BRANCHES = [
-  {
-    name: "Inanam",
-    phone: "016-743 4011",
-    address:
-      "Inanam Business Centre, Block H, PH2, Jalan Tuaran, 88450 Kota Kinabalu",
-  },
-  {
-    name: "City Prade, KK",
-    phone: "016-878 4311",
-    address:
-      "Lot G 29, City Prade, Pusat Bandar Kota Kinabalu, 88000 Kota Kinabalu",
-  },
-  {
-    name: "Karamunsing, KK",
-    phone: "016-937 5611",
-    address:
-      "A-0-1, Lot 1 Block A, Karamunsing Capital, 88450 Kota Kinabalu",
-  },
-];
-
-// Only show first 2 on homepage
-const PREVIEW_BRANCHES = BRANCHES.slice(0, 2);
+import { PREVIEW_BRANCHES } from "@/lib/branches";
 
 const containerVariants = {
   hidden: {},
@@ -69,22 +46,23 @@ export function BranchPreview() {
           whileInView="visible"
           viewport={{ once: true }}
           variants={containerVariants}
-          className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-3xl mx-auto"
+          className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-4xl mx-auto"
         >
           {PREVIEW_BRANCHES.map((branch) => (
             <motion.div
-              key={branch.name}
+              key={branch.id}
               variants={itemVariants}
               className="rounded-xl glass-card p-5 md:p-6 flex flex-col gap-3 transition-all duration-200 hover:shadow-md hover:border-primary/20"
             >
               <h3 className="text-lg font-semibold text-foreground">
-                {branch.name}
+                {branch.shortName}
               </h3>
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3 flex-wrap">
                 <a
-                  href={`tel:${branch.phone.replace(/[^0-9+]/g, "")}`}
-                  className="text-base font-semibold text-primary hover:text-accent transition-colors"
+                  href={`tel:+60${branch.phone.replace(/[^0-9]/g, "")}`}
+                  className="inline-flex items-center gap-1.5 text-base font-semibold text-primary hover:text-accent transition-colors"
                 >
+                  <Phone className="h-3.5 w-3.5" />
                   {branch.phone}
                 </a>
                 <a
@@ -102,7 +80,7 @@ export function BranchPreview() {
               </div>
               <div className="flex items-center gap-2 text-xs text-muted-foreground">
                 <Clock className="h-3.5 w-3.5 shrink-0 text-muted-foreground/60" />
-                <span>{t("hours")}</span>
+                <span>{branch.hours}</span>
               </div>
               <Link
                 href="/find-us"
