@@ -44,7 +44,7 @@ export const translations = {
     viewLocation: "View Location",
 
     // Footer
-    copyright: "Smart Phone Accessories Sdn Bhd | @",
+    copyright: "Smart Phone Accessories Sdn Bhd @ 2026",
 
     // Social / Floating bar
     connectWithUs: "Connect With Us",
@@ -189,7 +189,7 @@ export const translations = {
     visitStores: "Lawat Kedai Kami",
     visitStoresSubtitle: "3 lokasi mudah di seluruh Kota Kinabalu, Sabah.",
     viewLocation: "Lihat Lokasi",
-    copyright: "Smart Phone Accessories Sdn Bhd | @",
+    copyright: "Smart Phone Accessories Sdn Bhd @ 2026",
     connectWithUs: "Hubungi Kami",
     facebook: "Facebook",
     whatsapp: "WhatsApp",
@@ -316,7 +316,7 @@ export const translations = {
     visitStores: "访问我们的商店",
     visitStoresSubtitle: "亚庇三个便利位置。",
     viewLocation: "查看位置",
-    copyright: "Smart Phone Accessories Sdn Bhd | @",
+    copyright: "Smart Phone Accessories Sdn Bhd @ 2026",
     connectWithUs: "联系我们",
     facebook: "Facebook",
     whatsapp: "WhatsApp",
