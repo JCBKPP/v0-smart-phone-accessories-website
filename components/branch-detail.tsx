@@ -2,6 +2,7 @@
 
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
+import { useLanguage } from "@/lib/language-context";
 
 interface BranchDetailProps {
   name: string;
@@ -16,52 +17,50 @@ export function BranchDetail({
   phone,
   address,
   mapQuery,
-  hours = "Mon - Sat: 9:30 AM - 7:00 PM | Sun: 10:00 AM - 5:00 PM",
 }: BranchDetailProps) {
+  const { t } = useLanguage();
   const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent(mapQuery)}&output=embed`;
   const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(mapQuery)}`;
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
-      className="flex flex-col lg:flex-row gap-8 lg:gap-12"
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ duration: 0.4, ease: "easeOut" }}
+      className="flex flex-col lg:flex-row gap-6 lg:gap-8"
     >
       {/* Info */}
-      <div className="flex-1 flex flex-col justify-center gap-4">
-        <h3 className="text-2xl font-semibold text-foreground text-balance">
+      <div className="flex-1 flex flex-col justify-center gap-3">
+        <h3 className="text-xl font-semibold text-foreground text-balance">
           {name}
         </h3>
         <a
           href={`tel:${phone.replace(/[^0-9+]/g, "")}`}
-          className="text-xl text-foreground hover:text-primary transition-colors font-medium"
+          className="text-lg text-primary hover:text-accent transition-colors font-semibold"
         >
           {phone}
         </a>
-        <p className="text-muted-foreground leading-relaxed">
+        <p className="text-sm text-muted-foreground leading-relaxed">
           {address}
         </p>
-        <p className="text-sm text-muted-foreground">
-          {hours}
-        </p>
+        <p className="text-xs text-muted-foreground">{t("hours")}</p>
         <a
           href={directionsUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-accent transition-colors group mt-2 self-start"
+          className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-accent transition-colors group mt-1 self-start"
         >
-          {"Get Directions"}
+          {t("getDirections")}
           <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-1" />
         </a>
       </div>
 
       {/* Map */}
-      <div className="flex-1 min-h-[300px] lg:min-h-[400px] rounded-xl overflow-hidden border border-border">
+      <div className="flex-1 min-h-[260px] lg:min-h-[320px] rounded-xl overflow-hidden border border-border">
         <iframe
           src={mapSrc}
-          className="h-full w-full min-h-[300px] lg:min-h-[400px]"
+          className="h-full w-full min-h-[260px] lg:min-h-[320px]"
           allowFullScreen
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"

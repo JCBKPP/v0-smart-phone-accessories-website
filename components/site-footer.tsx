@@ -2,64 +2,82 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { useLanguage } from "@/lib/language-context";
 
 export function SiteFooter() {
+  const { t } = useLanguage();
+
+  const links = [
+    { href: "/", label: t("home") },
+    { href: "/#what-we-sell", label: t("whatWeSell") },
+    { href: "/find-us", label: t("findUs") },
+    { href: "/about", label: t("about") },
+  ];
+
   return (
-    <motion.footer
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5 }}
-      className="border-t border-border bg-secondary"
-    >
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
-          {/* Left: Company */}
-          <Link href="/" className="flex items-center">
+    <footer className="border-t border-border bg-secondary/50">
+      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+          {/* Logo */}
+          <Link href="/" className="flex items-center shrink-0">
             <Image
               src="/images/sp-logo.png"
               alt="SP Accessories logo"
-              width={140}
-              height={56}
-              className="h-12 w-auto"
+              width={100}
+              height={40}
+              className="h-8 w-auto"
             />
           </Link>
 
-          {/* Center: Quick links */}
-          <nav className="flex flex-wrap items-center gap-x-6 gap-y-2" aria-label="Footer navigation">
-            {["Home", "Accessories", "Find Us", "About"].map((label) => {
-              const href = label === "Home" ? "/" : label === "Accessories" ? "/#accessories" : label === "Find Us" ? "/find-us" : "/about";
-              return (
-                <Link
-                  key={label}
-                  href={href}
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
-                >
-                  {label}
-                </Link>
-              );
-            })}
+          {/* Nav links */}
+          <nav
+            className="flex flex-wrap items-center gap-x-5 gap-y-1"
+            aria-label="Footer navigation"
+          >
+            {links.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
+              >
+                {link.label}
+              </Link>
+            ))}
           </nav>
 
-          {/* Right: Contact numbers */}
+          {/* Contact */}
           <div className="text-sm text-muted-foreground">
-            <p className="mb-1">Visit our stores</p>
-            <div className="flex flex-wrap gap-x-4 gap-y-1">
-              <a href="tel:0167434011" className="hover:text-primary transition-colors">016-743 4011</a>
-              <a href="tel:0168784311" className="hover:text-primary transition-colors">016-878 4311</a>
-              <a href="tel:0169375611" className="hover:text-primary transition-colors">016-937 5611</a>
+            <p className="mb-1 text-xs">{t("visitOurStores")}</p>
+            <div className="flex flex-wrap gap-x-3 gap-y-1">
+              <a
+                href="tel:0167434011"
+                className="hover:text-primary transition-colors"
+              >
+                016-743 4011
+              </a>
+              <a
+                href="tel:0168784311"
+                className="hover:text-primary transition-colors"
+              >
+                016-878 4311
+              </a>
+              <a
+                href="tel:0169375611"
+                className="hover:text-primary transition-colors"
+              >
+                016-937 5611
+              </a>
             </div>
           </div>
         </div>
 
-        {/* Bottom bar */}
-        <div className="mt-8 pt-6 border-t border-border">
+        {/* Copyright */}
+        <div className="mt-6 pt-4 border-t border-border">
           <p className="text-xs text-muted-foreground text-center">
-            {"2025 Smart Phone Accessories Sdn Bhd"}
+            {t("copyright")}
           </p>
         </div>
       </div>
-    </motion.footer>
+    </footer>
   );
 }

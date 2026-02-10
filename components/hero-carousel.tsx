@@ -4,21 +4,19 @@ import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
+import { useLanguage } from "@/lib/language-context";
 
 const SLIDES = [
   {
-    image:
-      "/images/unnamed.webp",
+    image: "/images/unnamed.webp",
     alt: "SP Smart Phone Accessories Sdn Bhd storefront with red signboard",
   },
   {
-    image:
-      "/images/2025-11-01.jpg",
+    image: "/images/2025-11-01.jpg",
     alt: "Inside SP Accessories store with aisles of phone cases and gadgets",
   },
   {
-    image:
-      "/images/2023-07-24.webp",
+    image: "/images/2023-07-24.webp",
     alt: "SP Smart Phone Accessories branch storefront with wide display windows",
   },
 ];
@@ -26,6 +24,7 @@ const SLIDES = [
 export function HeroCarousel() {
   const [current, setCurrent] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const { t } = useLanguage();
 
   const next = useCallback(() => {
     setCurrent((prev) => (prev + 1) % SLIDES.length);
@@ -47,16 +46,17 @@ export function HeroCarousel() {
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
       aria-roledescription="carousel"
-      aria-label="Featured promotions"
+      aria-label="Store photos"
     >
-      <div className="relative h-[70vh] md:h-[75vh]">
+      {/* Responsive height: shorter on mobile, taller on desktop */}
+      <div className="relative h-[50vh] sm:h-[55vh] md:h-[60vh] lg:h-[65vh]">
         <AnimatePresence mode="wait">
           <motion.div
             key={current}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.7, ease: "easeInOut" }}
+            transition={{ duration: 0.6, ease: "easeInOut" }}
             className="absolute inset-0"
             role="group"
             aria-roledescription="slide"
@@ -70,30 +70,45 @@ export function HeroCarousel() {
               priority={current === 0}
               sizes="100vw"
             />
+            {/* Subtle gradient overlay for contrast */}
+            <div className="absolute inset-0 bg-gradient-to-t from-foreground/40 via-transparent to-transparent" />
           </motion.div>
         </AnimatePresence>
+
+        {/* Tagline overlay */}
+        <div className="absolute bottom-12 sm:bottom-16 left-0 right-0 z-10 text-center px-4">
+          <motion.p
+            key={`tagline-${current}`}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="text-lg sm:text-xl md:text-2xl font-semibold text-background drop-shadow-lg"
+          >
+            {t("heroTagline")}
+          </motion.p>
+        </div>
       </div>
 
-      {/* Navigation arrows - fade in on hover */}
+      {/* Navigation arrows */}
       <button
         type="button"
         onClick={prev}
-        className="absolute left-4 top-1/2 z-20 -translate-y-1/2 flex h-12 w-12 items-center justify-center rounded-full bg-background/20 text-background backdrop-blur-sm opacity-0 hover:opacity-100 focus-visible:opacity-100 transition-all duration-300 min-h-[44px] min-w-[44px]"
+        className="absolute left-3 sm:left-4 top-1/2 z-20 -translate-y-1/2 flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-full bg-background/20 text-background backdrop-blur-sm hover:bg-background/40 transition-all duration-300 min-h-[44px] min-w-[44px]"
         aria-label="Previous slide"
       >
-        <ChevronLeft className="h-5 w-5" />
+        <ChevronLeft className="h-4 w-4 sm:h-5 sm:w-5" />
       </button>
       <button
         type="button"
         onClick={next}
-        className="absolute right-4 top-1/2 z-20 -translate-y-1/2 flex h-12 w-12 items-center justify-center rounded-full bg-background/20 text-background backdrop-blur-sm opacity-0 hover:opacity-100 focus-visible:opacity-100 transition-all duration-300 min-h-[44px] min-w-[44px]"
+        className="absolute right-3 sm:right-4 top-1/2 z-20 -translate-y-1/2 flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-full bg-background/20 text-background backdrop-blur-sm hover:bg-background/40 transition-all duration-300 min-h-[44px] min-w-[44px]"
         aria-label="Next slide"
       >
-        <ChevronRight className="h-5 w-5" />
+        <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5" />
       </button>
 
-      {/* Dots - minimal pill indicator */}
-      <div className="absolute bottom-8 left-1/2 z-20 -translate-x-1/2 flex items-center gap-2">
+      {/* Dots */}
+      <div className="absolute bottom-4 sm:bottom-6 left-1/2 z-20 -translate-x-1/2 flex items-center gap-1.5">
         {SLIDES.map((slide, index) => (
           <button
             key={slide.image}
@@ -101,7 +116,7 @@ export function HeroCarousel() {
             onClick={() => setCurrent(index)}
             className={`rounded-full transition-all duration-300 ${
               index === current
-                ? "h-2 w-8 bg-background"
+                ? "h-2 w-6 bg-background"
                 : "h-2 w-2 bg-background/40 hover:bg-background/60"
             }`}
             aria-label={`Go to slide ${index + 1}`}

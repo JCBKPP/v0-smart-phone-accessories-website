@@ -2,111 +2,114 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { MapPin, ShoppingBag, ShieldCheck, Headset, BadgeDollarSign, ArrowRight } from "lucide-react";
+import {
+  MapPin,
+  ShoppingBag,
+  ShieldCheck,
+  Headset,
+  BadgeDollarSign,
+  ArrowRight,
+} from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { motion } from "framer-motion";
+import { useLanguage } from "@/lib/language-context";
+import type { TranslationKey } from "@/lib/translations";
 
 interface ValueItem {
   icon: LucideIcon;
-  title: string;
-  description: string;
+  titleKey: TranslationKey;
+  descKey: TranslationKey;
 }
 
 const VALUES: ValueItem[] = [
   {
     icon: MapPin,
-    title: "Convenient Locations",
-    description: "Three stores across Kota Kinabalu means you are never far from quality accessories.",
+    titleKey: "convenientLocations",
+    descKey: "convenientLocationsDesc",
   },
-  {
-    icon: ShoppingBag,
-    title: "Wide Product Range",
-    description: "From cases to chargers, audio to storage -- accessories for all major phone brands.",
-  },
+  { icon: ShoppingBag, titleKey: "wideRange", descKey: "wideRangeDesc" },
   {
     icon: ShieldCheck,
-    title: "Quality Guaranteed",
-    description: "We carefully select every product, ensuring reliable accessories that last.",
+    titleKey: "qualityGuaranteed",
+    descKey: "qualityGuaranteedDesc",
   },
-  {
-    icon: Headset,
-    title: "Expert Service",
-    description: "Our knowledgeable staff help you find the perfect accessories for your needs.",
-  },
+  { icon: Headset, titleKey: "expertService", descKey: "expertServiceDesc" },
   {
     icon: BadgeDollarSign,
-    title: "Competitive Pricing",
-    description: "Great products at fair prices -- quality accessories accessible to everyone.",
+    titleKey: "competitivePricing",
+    descKey: "competitivePricingDesc",
   },
 ];
 
 const staggerContainer = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.1 } },
+  visible: { transition: { staggerChildren: 0.08 } },
 };
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } },
+  hidden: { opacity: 0, y: 16 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.35, ease: "easeOut" },
+  },
 };
 
 export default function AboutPage() {
+  const { t } = useLanguage();
+
   return (
     <>
-      {/* Hero - white, centered, minimal */}
-      <section className="py-20 md:py-32 bg-background">
+      {/* Hero */}
+      <section className="pt-12 pb-8 md:pt-16 md:pb-10 bg-background">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
           <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-            className="text-4xl md:text-5xl font-bold text-foreground text-balance"
-          >
-            Better In Your Life
-          </motion.h1>
-          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }}
-            className="mt-4 text-xl text-muted-foreground max-w-xl mx-auto leading-relaxed"
+            transition={{ duration: 0.4, ease: "easeOut" }}
+            className="text-3xl md:text-4xl font-bold text-foreground text-balance"
           >
-            Smart Phone Accessories Sdn Bhd -- your trusted phone accessories retailer in Sabah, Malaysia.
+            {t("aboutHeroTitle")}
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, ease: "easeOut", delay: 0.1 }}
+            className="mt-3 text-base md:text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed"
+          >
+            {t("aboutHeroSubtitle")}
           </motion.p>
         </div>
       </section>
 
       {/* Story */}
-      <section className="pb-20 md:pb-32 bg-background">
+      <section className="pb-12 md:pb-16 bg-background">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-            className="flex flex-col gap-6 text-lg leading-relaxed text-muted-foreground"
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+            className="flex flex-col gap-4 text-base leading-relaxed text-muted-foreground"
           >
-            <p>
-              We began with a simple mission: to make quality phone accessories accessible and affordable for everyone in Kota Kinabalu. Starting from our first shop, we quickly earned trust through excellent products and genuine service.
-            </p>
-            <p>
-              Today we operate three branches -- Inanam Business Centre, City Prade downtown, and Karamunsing Capital -- each carrying a comprehensive selection of accessories for all major smartphone brands.
-            </p>
+            <p>{t("storyP1")}</p>
+            <p>{t("storyP2")}</p>
           </motion.div>
         </div>
       </section>
 
-      {/* Why Choose Us - minimal grid, no cards */}
-      <section className="py-20 md:py-32 bg-background">
+      {/* Why Choose Us */}
+      <section className="py-12 md:py-16 bg-secondary/30">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-            className="text-center mb-16"
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+            className="text-center mb-8"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground text-balance">
-              Why Choose Us
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground text-balance">
+              {t("whyChooseUs")}
             </h2>
           </motion.div>
 
@@ -115,22 +118,25 @@ export default function AboutPage() {
             whileInView="visible"
             viewport={{ once: true }}
             variants={staggerContainer}
-            className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8"
+            className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-5 gap-6"
           >
             {VALUES.map((item) => {
               const Icon = item.icon;
               return (
                 <motion.div
-                  key={item.title}
+                  key={item.titleKey}
                   variants={fadeUp}
                   className="text-center"
                 >
-                  <Icon className="h-8 w-8 text-foreground mx-auto mb-4" strokeWidth={1.5} />
-                  <h3 className="text-lg font-semibold text-foreground mb-2">
-                    {item.title}
+                  <Icon
+                    className="h-7 w-7 text-primary mx-auto mb-3"
+                    strokeWidth={1.5}
+                  />
+                  <h3 className="text-sm font-semibold text-foreground mb-1">
+                    {t(item.titleKey)}
                   </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    {item.description}
+                  <p className="text-xs text-muted-foreground leading-relaxed">
+                    {t(item.descKey)}
                   </p>
                 </motion.div>
               );
@@ -140,32 +146,41 @@ export default function AboutPage() {
       </section>
 
       {/* Gallery */}
-      <section className="py-20 md:py-32 bg-secondary">
+      <section className="py-12 md:py-16 bg-background">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-            className="text-center mb-12"
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+            className="text-center mb-8"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground text-balance">
-              Our Stores
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground text-balance">
+              {t("ourStores")}
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             {[
-              { src: "/images/store-team.jpg", alt: "SP Accessories store interior" },
-              { src: "/images/gallery-1.jpg", alt: "Phone accessories display" },
-              { src: "/images/gallery-2.jpg", alt: "Accessories wall display" },
+              {
+                src: "/images/store-team.jpg",
+                alt: "SP Accessories store interior",
+              },
+              {
+                src: "/images/gallery-1.jpg",
+                alt: "Phone accessories display",
+              },
+              {
+                src: "/images/gallery-2.jpg",
+                alt: "Accessories wall display",
+              },
             ].map((img) => (
               <motion.div
                 key={img.src}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, ease: "easeOut" }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
                 className="relative aspect-[4/3] rounded-xl overflow-hidden"
               >
                 <Image
@@ -183,25 +198,25 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 md:py-28 bg-background text-center">
+      <section className="py-10 md:py-12 bg-secondary/50 text-center">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground text-balance">
-              Visit Us Today
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground text-balance">
+              {t("visitUsToday")}
             </h2>
-            <p className="mt-4 text-muted-foreground max-w-md mx-auto leading-relaxed">
-              Find the perfect accessories for your device at any of our three locations.
+            <p className="mt-2 text-sm text-muted-foreground max-w-md mx-auto leading-relaxed">
+              {t("visitUsTodaySubtitle")}
             </p>
             <Link
               href="/find-us"
-              className="mt-8 inline-flex items-center gap-2 rounded-full bg-primary px-8 py-3 text-sm font-semibold text-primary-foreground hover:bg-accent transition-colors min-h-[44px]"
+              className="mt-6 inline-flex items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-accent transition-colors min-h-[44px]"
             >
-              Find Our Stores
+              {t("findOurStores")}
               <ArrowRight className="h-4 w-4" />
             </Link>
           </motion.div>
