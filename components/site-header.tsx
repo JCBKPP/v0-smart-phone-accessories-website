@@ -3,9 +3,11 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, Smartphone } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { SmartSearch } from "@/components/smart-search";
+import { SpLogo } from "@/components/sp-logo";
 import { cn } from "@/lib/utils";
+import { Smartphone } from "@/components/smartphone"; // Added import for Smartphone
 
 const NAV_LINKS = [
   { href: "/", label: "Home" },
@@ -22,10 +24,8 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 w-full border-b border-border bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/80">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
         {/* Logo */}
-        <Link href="/" className="flex shrink-0 items-center gap-2.5 group">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary text-primary-foreground transition-transform group-hover:scale-105">
-            <Smartphone className="h-5 w-5" />
-          </div>
+        <Link href="/" className="flex shrink-0 items-center gap-2 group">
+          <SpLogo size={40} className="transition-transform group-hover:scale-105" />
           <div className="hidden sm:block">
             <p className="text-sm font-bold leading-tight text-foreground tracking-tight">
               Smart Phone
