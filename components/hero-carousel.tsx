@@ -1,5 +1,7 @@
 "use client";
 
+import React from "react"
+
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
@@ -7,16 +9,36 @@ import { useLanguage } from "@/lib/language-context";
 
 const SLIDES = [
   {
-    image: "/images/unnamed.webp",
+    image: "/images/banner-storefront-red.webp",
     alt: "SP Smart Phone Accessories Sdn Bhd storefront with red signboard",
+  },
+  {
+    image: "/images/banner-storefront-welcome.webp",
+    alt: "SP Accessories storefront with Welcome Selamat Datang signboard",
+  },
+  {
+    image: "/images/banner-storefront-vivo.webp",
+    alt: "Smart Phone Accessories store in shopping complex with Vivo branding",
+  },
+  {
+    image: "/images/banner-interior-cables.webp",
+    alt: "Inside SP Accessories store with organized shelves of cables, tripods, and ring lights",
+  },
+  {
+    image: "/images/banner-interior-earphones.webp",
+    alt: "Inside SP Accessories store showing earphones, tempered glass, and accessories",
+  },
+  {
+    image: "/images/banner-mall-store.webp",
+    alt: "SP Accessories store in mall with illuminated 3D SP logo",
+  },
+  {
+    image: "/images/banner-storefront-pink.webp",
+    alt: "SP Accessories storefront with Welcome Selamat Datang and well-lit interior",
   },
   {
     image: "/images/2025-11-01.jpg",
     alt: "Inside SP Accessories store with aisles of phone cases and gadgets",
-  },
-  {
-    image: "/images/2023-07-24.webp",
-    alt: "SP Smart Phone Accessories branch storefront with wide display windows",
   },
 ];
 

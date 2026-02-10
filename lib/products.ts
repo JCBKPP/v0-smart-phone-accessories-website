@@ -108,4 +108,40 @@ export const PRODUCTS: Product[] = [
     image: "/images/magsafe-cases-grid.jpg",
     filter: "accessories",
   },
+  {
+    id: "wemos-wired-earphones",
+    label: "WEMOS 3.5mm Wired Stereo Earphone",
+    image: "/images/wemos-wired-earphones.jpg",
+    filter: "accessories",
+  },
+  {
+    id: "brown-wall-charger",
+    label: "Compact Wall Charger with Cable",
+    image: "/images/brown-wall-charger.jpg",
+    filter: "accessories",
+  },
+  {
+    id: "wireless-earbuds-touchscreen",
+    label: "Wireless Earbuds with Touch Screen Case",
+    image: "/images/wireless-earbuds-touchscreen.jpg",
+    filter: "accessories",
+  },
+  {
+    id: "wemos-25w-charger",
+    label: "WEMOS 25W Super Mini UK Charger",
+    image: "/images/wemos-25w-charger.jpg",
+    filter: "accessories",
+  },
+  {
+    id: "remax-cozypods-w23n",
+    label: "Remax CozyPods W23N ANC Earbuds",
+    image: "/images/remax-cozypods-w23n.jpg",
+    filter: "accessories",
+  },
+  {
+    id: "wemos-gan-charger-set",
+    label: "WEMOS GaN Mini Fast Charger Set",
+    image: "/images/wemos-gan-charger-set.jpg",
+    filter: "accessories",
+  },
 ];
