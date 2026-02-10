@@ -55,7 +55,7 @@ export function BranchPreview() {
               className="rounded-xl glass-card p-5 md:p-6 flex flex-col gap-3 transition-all duration-200 hover:shadow-md hover:border-primary/20"
             >
               <h3 className="text-lg font-semibold text-foreground">
-                {branch.shortName}
+                {branch.name}
               </h3>
               <div className="flex items-center gap-3 flex-wrap">
                 <a

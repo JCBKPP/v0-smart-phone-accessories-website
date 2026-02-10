@@ -20,7 +20,7 @@ const ALL_BRANCHES: Branch[] = [
   // --- Inanam area ---
   {
     id: "inanam-bc",
-    name: "SP (Inanam Business Centre)",
+    name: "SP Accessories Inanam BC",
     shortName: "Inanam BC",
     area: "inanam",
     address: "Lot 59 Ground Floor, Inanam Business Centre, Block H, PH2, Jalan Tuaran, 88450 Kota Kinabalu",
@@ -31,7 +31,7 @@ const ALL_BRANCHES: Branch[] = [
   },
   {
     id: "inanam-taipan",
-    name: "SP (Inanam Taipan)",
+    name: "SP Accessories Inanam Taipan",
     shortName: "Inanam Taipan",
     area: "inanam",
     address: "Taipan Lot 16 Block F (F-0-16), Lorong KK Taipan, Inanam, 88450 Kota Kinabalu",
@@ -43,7 +43,7 @@ const ALL_BRANCHES: Branch[] = [
   // --- Kingfisher area ---
   {
     id: "kingfisher",
-    name: "SP (Plaza Kingfisher)",
+    name: "SP Accessories Kingfisher",
     shortName: "Kingfisher",
     area: "kingfisher",
     address: "Lot 43 Ground Floor Block A, Plaza Kingfisher, Kuala Inanam, 88450 Kota Kinabalu",
@@ -55,7 +55,7 @@ const ALL_BRANCHES: Branch[] = [
   // --- Karamunsing area ---
   {
     id: "karamunsing",
-    name: "SP (Karamunsing Capital)",
+    name: "SP Accessories Karamunsing",
     shortName: "Karamunsing",
     area: "karamunsing",
     address: "A-0-1 Lot 1 Block A, Ground Floor, Karamunsing Capital, Kota Kinabalu",
@@ -67,7 +67,7 @@ const ALL_BRANCHES: Branch[] = [
   // --- Sinsuran area ---
   {
     id: "sinsuran",
-    name: "SP (Sinsuran Kompleks)",
+    name: "SP Accessories Sinsuran",
     shortName: "Sinsuran",
     area: "sinsuran",
     address: "Lot 6 Block I Ground Floor, Ruang Sinsuran 4, Kota Kinabalu",
@@ -79,7 +79,7 @@ const ALL_BRANCHES: Branch[] = [
   // --- KK City area ---
   {
     id: "kk-plaza",
-    name: "SP (KK Plaza)",
+    name: "SP Accessories KK Plaza",
     shortName: "KK Plaza",
     area: "kk-city",
     address: "Lot G39 Ground Floor, KK Plaza, Kota Kinabalu",
@@ -90,7 +90,7 @@ const ALL_BRANCHES: Branch[] = [
   },
   {
     id: "wisma-merdeka",
-    name: "SP (Wisma Merdeka)",
+    name: "SP Accessories Wisma Merdeka",
     shortName: "Wisma Merdeka",
     area: "kk-city",
     address: "Lot B124 1st Floor, Wisma Merdeka Phase 2, Kota Kinabalu",
@@ -101,7 +101,7 @@ const ALL_BRANCHES: Branch[] = [
   },
   {
     id: "city-parade",
-    name: "SP (City Parade / Centre Point)",
+    name: "SP Accessories City Parade",
     shortName: "City Parade",
     area: "kk-city",
     address: "Lot 34 Ground Floor Section A, City Parade, Kota Kinabalu",
@@ -113,7 +113,7 @@ const ALL_BRANCHES: Branch[] = [
   // --- Megalong / Penampang area ---
   {
     id: "megalong",
-    name: "SP (Megalong)",
+    name: "SP Accessories Megalong",
     shortName: "Megalong",
     area: "penampang",
     address: "LOT41 Ground Floor, Megalong Commercial Complex, Pekan Donggongon, 89500 Penampang, Sabah",
@@ -124,7 +124,7 @@ const ALL_BRANCHES: Branch[] = [
   },
   {
     id: "grand-millennium",
-    name: "SP (Grand Millennium Penampang)",
+    name: "SP Accessories Grand Millennium",
     shortName: "Grand Millennium",
     area: "penampang",
     address: "Lot 7 Ground Floor Block A, Plaza Grand Millennium, Penampang",
@@ -135,7 +135,7 @@ const ALL_BRANCHES: Branch[] = [
   },
   {
     id: "bandar-baru-penampang",
-    name: "SP (Bandar Baru Penampang)",
+    name: "SP Accessories Bandar Baru Penampang",
     shortName: "Bandar Baru",
     area: "penampang",
     address: "Lot 9 Block 21 Ground Floor, Bandar Baru Penampang",
@@ -147,7 +147,7 @@ const ALL_BRANCHES: Branch[] = [
   // --- Putatan area ---
   {
     id: "putra-square",
-    name: "SP (Putra Square Putatan)",
+    name: "SP Accessories Putatan",
     shortName: "Putra Square",
     area: "putatan",
     address: "Lot 6 Ground Floor, Putra Square Phase 1, Putatan",
@@ -159,7 +159,7 @@ const ALL_BRANCHES: Branch[] = [
   // --- Menggatal area ---
   {
     id: "menggatal",
-    name: "SP (Menggatal)",
+    name: "SP Accessories Menggatal",
     shortName: "Menggatal",
     area: "menggatal",
     address: "Lot 42 Unit D-0-5 Ground Floor, Block D Taman Permai, Menggatal",
@@ -171,7 +171,7 @@ const ALL_BRANCHES: Branch[] = [
   // --- Telipok area ---
   {
     id: "telipok",
-    name: "SP (University Utama Square / Telipok)",
+    name: "SP Accessories Telipok",
     shortName: "Telipok",
     area: "telipok",
     address: "Lot SB-5 University Utama Square, Telipok",
@@ -183,7 +183,7 @@ const ALL_BRANCHES: Branch[] = [
   // --- Sandakan ---
   {
     id: "sandakan",
-    name: "SP (Sandakan)",
+    name: "SP Accessories Sandakan",
     shortName: "Sandakan",
     area: "sandakan",
     address: "Lot 1-D Sejati Walk, Sandakan",
@@ -195,7 +195,7 @@ const ALL_BRANCHES: Branch[] = [
   // --- Kudat ---
   {
     id: "kudat",
-    name: "SP (Kudat)",
+    name: "SP Accessories Kudat",
     shortName: "Kudat",
     area: "kudat",
     address: "Block E-3A-0 Friendly Town Phase 1, Kudat",
@@ -219,6 +219,8 @@ export const BRANCH_AREAS: BranchArea[] = [
   { id: "sandakan", label: "Sandakan", branches: ALL_BRANCHES.filter(b => b.area === "sandakan") },
   { id: "kudat", label: "Kudat", branches: ALL_BRANCHES.filter(b => b.area === "kudat") },
 ];
+
+export const ALL_BRANCHES_FLAT = ALL_BRANCHES;
 
 // Featured branches for homepage preview
 export const PREVIEW_BRANCHES = [
