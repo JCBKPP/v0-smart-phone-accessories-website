@@ -76,6 +76,19 @@ export default function AlbumPage() {
             </motion.div>
           ))}
         </motion.div>
+
+        {/* Closing statement */}
+        <div className="mt-10 md:mt-14 text-center">
+          <p className="text-lg md:text-xl font-semibold text-muted-foreground">
+            {t("andManyMore")}
+          </p>
+          <Link
+            href="/find-us"
+            className="mt-4 inline-flex items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-accent transition-colors min-h-[44px]"
+          >
+            {t("seeAllLocations")}
+          </Link>
+        </div>
       </div>
     </div>
   );
