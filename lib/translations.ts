@@ -40,7 +40,7 @@ export const translations = {
 
     // Branches
     visitStores: "Visit Our Stores",
-    visitStoresSubtitle: "3 convenient locations across Kota Kinabalu, Sabah.",
+    visitStoresSubtitle: "More than 3 convenient locations across Sabah.",
     viewLocation: "View Location",
 
     // Footer
@@ -187,7 +187,7 @@ export const translations = {
     storage: "Storan",
     storageDesc: "Kad memori & penyesuai",
     visitStores: "Lawat Kedai Kami",
-    visitStoresSubtitle: "3 lokasi mudah di seluruh Kota Kinabalu, Sabah.",
+    visitStoresSubtitle: "Lebih daripada 3 lokasi mudah di seluruh Sabah.",
     viewLocation: "Lihat Lokasi",
     copyright: "Smart Phone Accessories Sdn Bhd @ 2026",
     connectWithUs: "Hubungi Kami",
@@ -314,7 +314,7 @@ export const translations = {
     storage: "存储",
     storageDesc: "存储卡和适配器",
     visitStores: "访问我们的商店",
-    visitStoresSubtitle: "亚庇三个便利位置。",
+    visitStoresSubtitle: "超过3个便利位置遍布沙巴。",
     viewLocation: "查看位置",
     copyright: "Smart Phone Accessories Sdn Bhd @ 2026",
     connectWithUs: "联系我们",
@@ -391,7 +391,7 @@ export const translations = {
 
     privacyTitle: "隐私政策",
     privacyIntro: "在Smart Phone Accessories Sdn Bhd，我们重视您的隐私，并致力于保护与您访问我们网站相关的任何信息。",
-    privacyNoCollect: "本网站不通过表单、注册或账户注册收集个人详细信息。我们不会要求您的姓名、电子邮件地址、电话号码或任何其他个人身份信息。",
+    privacyNoCollect: "本网站不通过表单、注册或账户注册收集个人详细信息。我们不会要求您的姓名、电子���件地址、电话号码或任何其他个人身份信息。",
     privacyCookies: "Cookie和缓存",
     privacyCookiesText: "我们的网站可能仅使用基本Cookie和浏览器缓存来实现网站功能和性能。这些帮助网站更快加载并记住您的语言偏好。不使用跟踪Cookie或第三方分析。",
     privacyThirdParty: "第三方链接",
