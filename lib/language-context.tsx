@@ -16,7 +16,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     const saved = typeof window !== "undefined" ? localStorage.getItem("sp-lang") : null;
-    if (saved === "en" || saved === "ms") {
+    if (saved === "en" || saved === "ms" || saved === "zh") {
       setLocaleState(saved);
     }
   }, []);

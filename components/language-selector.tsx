@@ -3,9 +3,10 @@
 import { useLanguage } from "@/lib/language-context";
 import type { Locale } from "@/lib/translations";
 
-const LANGUAGES: { code: Locale; label: string; flag: string }[] = [
-  { code: "en", label: "EN", flag: "US" },
-  { code: "ms", label: "BM", flag: "MY" },
+const LANGUAGES: { code: Locale; label: string }[] = [
+  { code: "en", label: "EN" },
+  { code: "ms", label: "BM" },
+  { code: "zh", label: "CN" },
 ];
 
 export function LanguageSelector() {
@@ -18,12 +19,12 @@ export function LanguageSelector() {
           key={lang.code}
           type="button"
           onClick={() => setLocale(lang.code)}
-          className={`px-2.5 py-1 text-xs font-medium transition-all min-h-[32px] ${
+          className={`px-2 py-1 text-xs font-medium transition-all min-h-[32px] ${
             locale === lang.code
               ? "bg-primary text-primary-foreground"
               : "text-muted-foreground hover:text-foreground"
           }`}
-          aria-label={`Switch to ${lang.code === "en" ? "English" : "Bahasa Melayu"}`}
+          aria-label={`Switch to ${lang.label}`}
           aria-pressed={locale === lang.code}
         >
           {lang.label}

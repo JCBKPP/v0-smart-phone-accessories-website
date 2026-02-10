@@ -1,4 +1,4 @@
-export type Locale = "en" | "ms";
+export type Locale = "en" | "ms" | "zh";
 
 export const translations = {
   en: {
@@ -46,12 +46,13 @@ export const translations = {
     // Footer
     copyright: "Smart Phone Accessories Sdn Bhd | @",
 
-    // Social drawer
+    // Social / Floating bar
     connectWithUs: "Connect With Us",
     facebook: "Facebook",
     whatsapp: "WhatsApp",
     liveAgent: "Live Agent",
     comingSoon: "Coming Soon",
+    language: "Language",
 
     // Find Us
     findUsTitle: "Find Us",
@@ -86,23 +87,33 @@ export const translations = {
 
     // Category badge
     category: "Category",
+
+    // Services
+    servicesTitle: "Our Services",
+    servicesSubtitle: "Professional services to keep your devices looking and performing their best.",
+    screenInstall: "Screen Protector Installation",
+    screenInstallDesc: "Professional tempered glass installation with bubble-free guarantee.",
+    deviceCleaning: "Device Cleaning",
+    deviceCleaningDesc: "Deep cleaning service for your phone, tablet, and accessories.",
+    bulkOrders: "Bulk / Corporate Orders",
+    bulkOrdersDesc: "Special pricing for businesses and large orders. Contact us for a quote.",
+    contactWhatsApp: "Contact via WhatsApp",
+    letUsKnow: "Custom Requests",
+    letUsKnowDesc: "Need something special? Let us know and we will source it for you.",
+
+    // Testimonials
+    testimonialsTitle: "What Our Customers Say",
+    testimonialsSubtitle: "Real feedback from our valued customers across Sabah.",
   },
   ms: {
-    // Header nav
     home: "Utama",
     whatWeSell: "Apa Yang Kami Jual",
     findUs: "Cari Kami",
     about: "Tentang Kami",
-
-    // Hero -- slogan always in English
     heroTagline: "Better In Your Life",
     heroSubtitle: "Sumber dipercayai anda untuk aksesori telefon berkualiti di Sabah, Malaysia.",
-
-    // What We Sell
     whatWeSellTitle: "Apa Yang Kami Jual",
     whatWeSellSubtitle: "Cari aksesori yang sesuai untuk telefon pintar anda pada harga yang berpatutan.",
-
-    // Categories
     phoneCases: "Sarung Telefon",
     phoneCasesDesc: "Sarung pelindung & bergaya",
     screenProtectors: "Pelindung Skrin",
@@ -123,34 +134,25 @@ export const translations = {
     cleaningKitsDesc: "Pembersih skrin & kain",
     storage: "Storan",
     storageDesc: "Kad memori & penyesuai",
-
-    // Branches
     visitStores: "Lawat Kedai Kami",
     visitStoresSubtitle: "3 lokasi mudah di seluruh Kota Kinabalu, Sabah.",
     viewLocation: "Lihat Lokasi",
-
-    // Footer
     copyright: "Smart Phone Accessories Sdn Bhd | @",
-
-    // Social drawer
     connectWithUs: "Hubungi Kami",
     facebook: "Facebook",
     whatsapp: "WhatsApp",
     liveAgent: "Ejen Langsung",
     comingSoon: "Akan Datang",
-
-    // Find Us
+    language: "Bahasa",
     findUsTitle: "Cari Kami",
     findUsSubtitle: "Lawat mana-mana 3 cawangan kami di Kota Kinabalu, Sabah.",
     getDirections: "Dapatkan Arah",
     needHelp: "Perlukan Bantuan Mencari Kami?",
     needHelpSubtitle: "Hubungi kami dan kami akan membimbing anda ke kedai kami.",
-
-    // About
     aboutHeroTitle: "Better In Your Life",
     aboutHeroSubtitle: "Smart Phone Accessories Sdn Bhd -- peruncit aksesori telefon dipercayai anda di Sabah, Malaysia.",
-    storyP1: "Kami bermula dengan misi yang mudah: menjadikan aksesori telefon berkualiti mudah diakses dan berpatutan untuk semua orang di Kota Kinabalu. Bermula dari kedai pertama kami, kami dengan cepat memperoleh kepercayaan melalui produk yang cemerlang dan perkhidmatan yang tulen.",
-    storyP2: "Hari ini kami mengendalikan tiga cawangan -- Inanam Business Centre, City Prade di pusat bandar, dan Karamunsing Capital -- setiap satu mempunyai pilihan aksesori yang komprehensif untuk semua jenama telefon pintar utama.",
+    storyP1: "Kami bermula dengan misi yang mudah: menjadikan aksesori telefon berkualiti mudah diakses dan berpatutan untuk semua orang di Kota Kinabalu.",
+    storyP2: "Hari ini kami mengendalikan tiga cawangan -- Inanam Business Centre, City Prade di pusat bandar, dan Karamunsing Capital.",
     whyChooseUs: "Mengapa Pilih Kami",
     convenientLocations: "Lokasi Mudah",
     convenientLocationsDesc: "Tiga kedai di seluruh Kota Kinabalu bermakna anda tidak pernah jauh dari aksesori berkualiti.",
@@ -159,19 +161,107 @@ export const translations = {
     qualityGuaranteed: "Jaminan Kualiti",
     qualityGuaranteedDesc: "Kami memilih setiap produk dengan teliti, memastikan aksesori yang boleh dipercayai dan tahan lama.",
     expertService: "Perkhidmatan Pakar",
-    expertServiceDesc: "Kakitangan kami yang berpengetahuan membantu anda mencari aksesori yang sempurna untuk keperluan anda.",
+    expertServiceDesc: "Kakitangan kami yang berpengetahuan membantu anda mencari aksesori yang sempurna.",
     competitivePricing: "Harga Berpatutan",
     competitivePricingDesc: "Produk berkualiti pada harga yang berpatutan -- aksesori berkualiti untuk semua orang.",
     ourStores: "Kedai Kami",
     visitUsToday: "Lawat Kami Hari Ini",
     visitUsTodaySubtitle: "Cari aksesori yang sempurna untuk peranti anda di mana-mana tiga lokasi kami.",
     findOurStores: "Cari Kedai Kami",
-
-    // Hours
     hours: "Isn - Sab: 9:30 PG - 7:00 PTG | Ahd: 10:00 PG - 5:00 PTG",
-
-    // Category badge
     category: "Kategori",
+    servicesTitle: "Perkhidmatan Kami",
+    servicesSubtitle: "Perkhidmatan profesional untuk memastikan peranti anda sentiasa kelihatan dan berfungsi dengan baik.",
+    screenInstall: "Pemasangan Pelindung Skrin",
+    screenInstallDesc: "Pemasangan kaca tempered profesional dengan jaminan tanpa gelembung.",
+    deviceCleaning: "Pembersihan Peranti",
+    deviceCleaningDesc: "Perkhidmatan pembersihan mendalam untuk telefon, tablet, dan aksesori anda.",
+    bulkOrders: "Pesanan Pukal / Korporat",
+    bulkOrdersDesc: "Harga istimewa untuk perniagaan dan pesanan besar. Hubungi kami untuk sebut harga.",
+    contactWhatsApp: "Hubungi melalui WhatsApp",
+    letUsKnow: "Permintaan Khas",
+    letUsKnowDesc: "Perlukan sesuatu yang istimewa? Beritahu kami dan kami akan mendapatkannya untuk anda.",
+    testimonialsTitle: "Apa Kata Pelanggan Kami",
+    testimonialsSubtitle: "Maklum balas sebenar daripada pelanggan kami yang dihargai di seluruh Sabah.",
+  },
+  zh: {
+    home: "首页",
+    whatWeSell: "我们的产品",
+    findUs: "找到我们",
+    about: "关于我们",
+    heroTagline: "Better In Your Life",
+    heroSubtitle: "您在沙巴马来西亚值得信赖的优质手机配件来源。",
+    whatWeSellTitle: "我们的产品",
+    whatWeSellSubtitle: "以优惠价格为您的智能手机找到完美配件。",
+    phoneCases: "手机壳",
+    phoneCasesDesc: "保护性和时尚的外壳",
+    screenProtectors: "屏幕保护膜",
+    screenProtectorsDesc: "钢化玻璃和贴膜",
+    chargingCables: "充电线",
+    chargingCablesDesc: "USB-C, Lightning 等",
+    powerBanks: "充电宝",
+    powerBanksDesc: "便携式充电方案",
+    phoneHolders: "手机支架",
+    phoneHoldersDesc: "车载和桌面支架",
+    earphones: "耳机和音频",
+    earphonesDesc: "有线和无线音频",
+    cameraAccessories: "相机配件",
+    cameraAccessoriesDesc: "镜头、灯光和三脚架",
+    phoneGrips: "手机握把",
+    phoneGripsDesc: "PopSocket 和指环扣",
+    cleaningKits: "清洁套装",
+    cleaningKitsDesc: "屏幕清洁剂和布",
+    storage: "存储",
+    storageDesc: "存储卡和适配器",
+    visitStores: "访问我们的商店",
+    visitStoresSubtitle: "亚庇三个便利位置。",
+    viewLocation: "查看位置",
+    copyright: "Smart Phone Accessories Sdn Bhd | @",
+    connectWithUs: "联系我们",
+    facebook: "Facebook",
+    whatsapp: "WhatsApp",
+    liveAgent: "在线客服",
+    comingSoon: "即将推出",
+    language: "语言",
+    findUsTitle: "找到我们",
+    findUsSubtitle: "访问我们在亚庇的三家分店。",
+    getDirections: "获取路线",
+    needHelp: "需要帮助找到我们？",
+    needHelpSubtitle: "给我们打电话，我们会引导您到我们的商店。",
+    aboutHeroTitle: "Better In Your Life",
+    aboutHeroSubtitle: "Smart Phone Accessories Sdn Bhd -- 您在沙巴马来西亚值得信赖的手机配件零售商。",
+    storyP1: "我们以一个简单的使命开始：让亚庇的每个人都能获得优质且实惠的手机配件。",
+    storyP2: "如今我们经营三家分店 -- Inanam Business Centre、City Prade 市中心和 Karamunsing Capital。",
+    whyChooseUs: "为什么选择我们",
+    convenientLocations: "便利的位置",
+    convenientLocationsDesc: "亚庇三家商店意味着您离优质配件从不遥远。",
+    wideRange: "丰富的产品系列",
+    wideRangeDesc: "从手机壳到充电器，音频到存储 -- 所有主要手机品牌的配件。",
+    qualityGuaranteed: "品质保证",
+    qualityGuaranteedDesc: "我们精心挑选每一件产品，确保可靠耐用的配件。",
+    expertService: "专业服务",
+    expertServiceDesc: "我们知识丰富的员工帮助您找到适合您需求的完美配件。",
+    competitivePricing: "价格优惠",
+    competitivePricingDesc: "优质产品公道价格 -- 人人都能负担的优质配件。",
+    ourStores: "我们的商店",
+    visitUsToday: "今天就来访问我们",
+    visitUsTodaySubtitle: "在我们三个位置中的任何一个找到适合您设备的完美配件。",
+    findOurStores: "找到我们的商店",
+    hours: "周一至周六: 9:30 AM - 7:00 PM | 周日: 10:00 AM - 5:00 PM",
+    category: "类别",
+    servicesTitle: "我们的服务",
+    servicesSubtitle: "专业服务让您的设备保持最佳外观和性能。",
+    screenInstall: "屏幕保护膜安装",
+    screenInstallDesc: "专业钢化玻璃安装，无气泡保证。",
+    deviceCleaning: "设备清洁",
+    deviceCleaningDesc: "为您的手机、平板电脑和配件提供深度清洁服务。",
+    bulkOrders: "批量/企业订单",
+    bulkOrdersDesc: "为企业和大订单提供特别定价。联系我们获取报价。",
+    contactWhatsApp: "通过WhatsApp联系",
+    letUsKnow: "定制需求",
+    letUsKnowDesc: "需要特殊商品？告诉我们，我们会为您寻找。",
+    testimonialsTitle: "客户评价",
+    testimonialsSubtitle: "来自沙巴各地客户的真实反馈。",
   },
 } as const;
 
