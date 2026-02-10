@@ -16,19 +16,12 @@ export function FloatingActionBar() {
   const touchStartX = useRef<number | null>(null);
   const panelRef = useRef<HTMLDivElement>(null);
 
-  // Fade on scroll, restore on stop/scroll-up
+  // Fade on any scroll (up or down), restore when scrolling stops
   useEffect(() => {
-    let lastY = window.scrollY;
     const handleScroll = () => {
-      const currentY = window.scrollY;
-      if (currentY > lastY) {
-        setScrollFaded(true);
-      } else {
-        setScrollFaded(false);
-      }
-      lastY = currentY;
+      setScrollFaded(true);
       if (scrollTimer.current) clearTimeout(scrollTimer.current);
-      scrollTimer.current = setTimeout(() => setScrollFaded(false), 250);
+      scrollTimer.current = setTimeout(() => setScrollFaded(false), 400);
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => {
