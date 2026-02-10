@@ -34,7 +34,7 @@ export default function FindUsPage() {
   return (
     <>
       {/* Page Header */}
-      <section className="pt-12 pb-8 md:pt-16 md:pb-10 bg-background">
+      <section className="pt-12 pb-8 md:pt-16 md:pb-10 section-transparent">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h1 className="text-3xl md:text-4xl font-bold text-foreground text-balance">
             {t("findUsTitle")}
@@ -46,7 +46,7 @@ export default function FindUsPage() {
       </section>
 
       {/* Branch Sections */}
-      <section className="pb-12 md:pb-16 bg-background">
+      <section className="pb-12 md:pb-16 section-transparent">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col gap-12">
             {BRANCHES.map((branch, index) => (
@@ -67,7 +67,7 @@ export default function FindUsPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-10 md:py-12 bg-secondary/50 text-center">
+      <section className="py-10 md:py-12 section-muted text-center">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-xl md:text-2xl font-bold text-foreground text-balance">
             {t("needHelp")}

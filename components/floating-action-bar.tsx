@@ -103,7 +103,7 @@ export function FloatingActionBar() {
               animate={{ x: 0, opacity: 1 }}
               exit={{ x: "100%", opacity: 0 }}
               transition={{ duration: 0.3, ease: "easeInOut" }}
-              className="mr-0 flex flex-col gap-2 rounded-l-2xl border border-r-0 border-border/50 bg-background/85 p-3 shadow-xl backdrop-blur-lg"
+              className="mr-0 flex flex-col gap-2 rounded-l-2xl border border-r-0 border-border/30 bg-background/75 p-3 shadow-xl backdrop-blur-xl"
               onTouchStart={handlePanelTouchStart}
               onTouchEnd={handlePanelTouchEnd}
             >
@@ -173,7 +173,7 @@ export function FloatingActionBar() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
             onClick={() => setExpanded(true)}
-            className="flex flex-col items-center gap-2.5 rounded-l-2xl border border-r-0 border-border/50 bg-background/70 px-1.5 py-3 shadow-lg backdrop-blur-lg hover:bg-background/90 transition-all duration-300"
+            className="flex flex-col items-center gap-2.5 rounded-l-2xl border border-r-0 border-border/30 bg-background/60 px-1.5 py-3 shadow-lg backdrop-blur-xl hover:bg-background/80 transition-all duration-300"
             aria-label="Open contact and language options"
           >
             <ChevronLeft className="h-3.5 w-3.5 text-muted-foreground" />

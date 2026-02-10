@@ -42,7 +42,7 @@ export function ServicesSection() {
   const { t } = useLanguage();
 
   return (
-    <section className="py-12 md:py-16 bg-background">
+    <section className="py-12 md:py-16 section-muted">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -72,7 +72,7 @@ export function ServicesSection() {
               <motion.div
                 key={svc.nameKey}
                 variants={itemVariants}
-                className="group rounded-xl border border-border/60 bg-secondary/40 p-5 md:p-6 flex flex-col gap-3 transition-all duration-200 hover:border-primary/30 hover:shadow-md"
+                className="group rounded-xl glass-card p-5 md:p-6 flex flex-col gap-3 transition-all duration-200 hover:border-primary/30 hover:shadow-md"
               >
                 <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors group-hover:bg-primary/20">
                   <Icon className="h-5 w-5" strokeWidth={1.5} />

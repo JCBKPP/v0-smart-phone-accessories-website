@@ -47,7 +47,7 @@ export function BranchPreview() {
   const { t } = useLanguage();
 
   return (
-    <section className="py-12 md:py-16 bg-background">
+    <section className="py-12 md:py-16 section-transparent">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -75,7 +75,7 @@ export function BranchPreview() {
             <motion.div
               key={branch.name}
               variants={itemVariants}
-              className="rounded-xl border border-border/60 bg-secondary/40 p-5 md:p-6 flex flex-col gap-3 transition-all duration-200 hover:shadow-md hover:border-primary/20"
+              className="rounded-xl glass-card p-5 md:p-6 flex flex-col gap-3 transition-all duration-200 hover:shadow-md hover:border-primary/20"
             >
               <h3 className="text-lg font-semibold text-foreground">
                 {branch.name}

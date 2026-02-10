@@ -67,7 +67,7 @@ export function BranchDetail({
       </div>
 
       {/* Map */}
-      <div className="flex-1 min-h-[260px] lg:min-h-[320px] rounded-xl overflow-hidden border border-border">
+      <div className="flex-1 min-h-[260px] lg:min-h-[320px] rounded-xl overflow-hidden border border-border/30 shadow-sm">
         <iframe
           src={mapSrc}
           className="h-full w-full min-h-[260px] lg:min-h-[320px]"

@@ -61,7 +61,7 @@ export default function AboutPage() {
   return (
     <>
       {/* Hero */}
-      <section className="pt-12 pb-8 md:pt-16 md:pb-10 bg-background">
+      <section className="pt-12 pb-8 md:pt-16 md:pb-10 section-transparent">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
@@ -83,7 +83,7 @@ export default function AboutPage() {
       </section>
 
       {/* Story */}
-      <section className="pb-12 md:pb-16 bg-background">
+      <section className="pb-12 md:pb-16 section-transparent">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -99,7 +99,7 @@ export default function AboutPage() {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-12 md:py-16 bg-secondary/30">
+      <section className="py-12 md:py-16 section-muted">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -146,7 +146,7 @@ export default function AboutPage() {
       </section>
 
       {/* Gallery */}
-      <section className="py-12 md:py-16 bg-background">
+      <section className="py-12 md:py-16 section-transparent">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -198,7 +198,7 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-10 md:py-12 bg-secondary/50 text-center">
+      <section className="py-10 md:py-12 section-muted text-center">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 16 }}

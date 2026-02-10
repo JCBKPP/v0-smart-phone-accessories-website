@@ -15,7 +15,7 @@ export function SiteFooter() {
   ];
 
   return (
-    <footer className="border-t border-border bg-secondary/50">
+    <footer className="border-t border-border/30 section-muted">
       <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           {/* Logo */}
@@ -47,7 +47,7 @@ export function SiteFooter() {
         </div>
 
         {/* Policy links + Copyright */}
-        <div className="mt-6 pt-4 border-t border-border flex flex-col items-center gap-2">
+        <div className="mt-6 pt-4 border-t border-border/30 flex flex-col items-center gap-2">
           <div className="flex items-center gap-4">
             <Link
               href="/privacy"

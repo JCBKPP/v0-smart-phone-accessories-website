@@ -65,7 +65,7 @@ export function FaqSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section className="py-12 md:py-16 bg-background">
+    <section className="py-12 md:py-16 section-muted">
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -82,7 +82,7 @@ export function FaqSection() {
           </p>
         </motion.div>
 
-        <div className="rounded-xl border border-border/60 bg-secondary/20 px-5 md:px-6">
+        <div className="rounded-xl glass-card px-5 md:px-6">
           {FAQ_ITEMS.map((item, index) => (
             <AccordionItem
               key={item.qKey}

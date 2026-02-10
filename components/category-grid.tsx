@@ -72,7 +72,7 @@ function CarouselRow({
         <Link
           href="/album"
           key={`${product.id}-${idx}`}
-          className="shrink-0 w-36 rounded-xl border border-border/60 bg-secondary/30 overflow-hidden transition-colors hover:border-primary/30"
+          className="shrink-0 w-36 rounded-xl glass-card overflow-hidden transition-colors hover:border-primary/30"
         >
           <div className="aspect-square relative bg-secondary/60">
             <Image
@@ -127,7 +127,7 @@ export function CategoryGrid() {
   const { t } = useLanguage();
 
   return (
-    <section id="what-we-sell" className="py-12 md:py-16 bg-background">
+    <section id="what-we-sell" className="py-12 md:py-16 section-transparent">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -165,7 +165,7 @@ export function CategoryGrid() {
             <motion.div key={product.id} variants={itemVariants}>
               <Link
                 href="/album"
-                className="group flex flex-col rounded-xl border border-border/60 bg-secondary/30 overflow-hidden transition-all duration-200 hover:border-primary/30 hover:shadow-md hover:-translate-y-0.5"
+                className="group flex flex-col rounded-xl glass-card overflow-hidden transition-all duration-200 hover:border-primary/30 hover:shadow-md hover:-translate-y-0.5"
               >
                 <div className="aspect-square relative bg-secondary/60">
                   <Image

@@ -28,7 +28,7 @@ export default function FaqPage() {
   const { t } = useLanguage();
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen relative z-1">
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 pt-6 pb-2">
         <Link
           href="/"
@@ -57,7 +57,7 @@ export default function FaqPage() {
             <motion.div
               key={item.qKey}
               variants={itemVariants}
-              className="rounded-xl border border-border/60 bg-secondary/20 p-5 md:p-6"
+              className="rounded-xl glass-card p-5 md:p-6"
             >
               <h2 className="text-sm md:text-base font-semibold text-foreground leading-snug">
                 {t(item.qKey)}

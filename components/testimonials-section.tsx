@@ -51,7 +51,7 @@ function getInitials(name: string) {
 
 function TestimonialCard({ review }: { review: (typeof TESTIMONIALS)[number] }) {
   return (
-    <div className="rounded-xl border border-border/60 bg-background p-5 md:p-6 flex flex-col gap-3 shadow-sm h-full">
+    <div className="rounded-xl glass-card p-5 md:p-6 flex flex-col gap-3 shadow-sm h-full">
       <div className="flex items-center gap-3">
         <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary text-sm font-bold shrink-0">
           {getInitials(review.name)}
@@ -116,7 +116,7 @@ export function TestimonialsSection() {
   };
 
   return (
-    <section className="py-12 md:py-16 bg-secondary/50">
+    <section className="py-12 md:py-16 section-transparent">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
