@@ -6,9 +6,21 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 
 const SLIDES = [
-  { image: "/images/hero-1.jpg", alt: "SP Accessories storefront" },
-  { image: "/images/hero-2.jpg", alt: "Premium smartphone accessories" },
-  { image: "/images/hero-3.jpg", alt: "Wide range of phone accessories" },
+  {
+    image:
+      "/images/unnamed.webp",
+    alt: "SP Smart Phone Accessories Sdn Bhd storefront with red signboard",
+  },
+  {
+    image:
+      "/images/2025-11-01.jpg",
+    alt: "Inside SP Accessories store with aisles of phone cases and gadgets",
+  },
+  {
+    image:
+      "/images/2023-07-24.webp",
+    alt: "SP Smart Phone Accessories branch storefront with wide display windows",
+  },
 ];
 
 export function HeroCarousel() {
