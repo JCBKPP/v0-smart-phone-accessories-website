@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     template: "%s | SP Accessories",
   },
   description:
-    "Your trusted source for quality phone accessories in Sabah, Malaysia. Phone cases, screen protectors, charging cables, power banks, and more across 3 locations in Kota Kinabalu.",
+    "Your trusted source for quality phone accessories in Sabah, Malaysia. Phone cases, screen protectors, charging cables, power banks, and more across 7+ locations in Sabah.",
   keywords: [
     "phone accessories",
     "Kota Kinabalu",
@@ -27,10 +27,15 @@ export const metadata: Metadata = {
     "power banks",
     "Malaysia",
   ],
+  icons: {
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
+  },
   openGraph: {
     title: "SP Accessories | Smart Phone Accessories Sdn Bhd",
     description:
-      "Quality phone accessories across 3 branches in Sabah, Malaysia.",
+      "Quality phone accessories across 7+ branches in Sabah, Malaysia.",
     type: "website",
     locale: "en_MY",
   },
