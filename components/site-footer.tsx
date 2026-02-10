@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { SpLogo } from "@/components/sp-logo";
+import Image from "next/image";
 import { motion } from "framer-motion";
 
 export function SiteFooter() {
@@ -16,13 +16,15 @@ export function SiteFooter() {
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
           {/* Left: Company */}
-          <div className="flex items-center gap-2.5">
-            <SpLogo size={32} />
-            <div>
-              <p className="text-lg font-semibold text-foreground">SP Accessories</p>
-              <p className="text-sm text-muted-foreground">Better In Your Life</p>
-            </div>
-          </div>
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/images/sp-logo.png"
+              alt="SP Accessories logo"
+              width={140}
+              height={56}
+              className="h-12 w-auto"
+            />
+          </Link>
 
           {/* Center: Quick links */}
           <nav className="flex flex-wrap items-center gap-x-6 gap-y-2" aria-label="Footer navigation">

@@ -3,9 +3,9 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import { SmartSearch } from "@/components/smart-search";
-import { SpLogo } from "@/components/sp-logo";
 
 const NAV_LINKS = [
   { href: "/", label: "Home" },
@@ -22,11 +22,15 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/80 backdrop-blur-md">
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
         {/* Logo */}
-        <Link href="/" className="flex shrink-0 items-center gap-2.5 group">
-          <SpLogo size={38} className="transition-transform duration-300 group-hover:scale-105" />
-          <span className="hidden sm:block text-lg font-semibold text-foreground tracking-tight">
-            SP Accessories
-          </span>
+        <Link href="/" className="flex shrink-0 items-center gap-2 group">
+          <Image
+            src="/images/sp-logo.png"
+            alt="SP Accessories logo"
+            width={120}
+            height={48}
+            className="h-10 w-auto transition-transform duration-300 group-hover:scale-105"
+            priority
+          />
         </Link>
 
         {/* Search - desktop */}
