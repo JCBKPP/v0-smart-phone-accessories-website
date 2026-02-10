@@ -1,0 +1,51 @@
+export interface Product {
+  id: string;
+  label: string;
+  image: string;
+  filter: "accessories" | "screen-protectors" | "others";
+}
+
+export const PRODUCTS: Product[] = [
+  {
+    id: "magnetic-bracket",
+    label: "Vacuum Suction Magnetic Bracket",
+    image:
+      "/images/558115633-1427383602723239-2327137815247519788-n.jpg",
+    filter: "accessories",
+  },
+  {
+    id: "phone-stand",
+    label: "Aluminium Phone Stand",
+    image:
+      "/images/626810686-1540051421456456-6612431340798960154-n.jpg",
+    filter: "accessories",
+  },
+  {
+    id: "cozypods-earbuds",
+    label: "CozyPods W23N TWS Earbuds",
+    image:
+      "/images/617581821-1531686145626317-253126895233022618-n.jpg",
+    filter: "accessories",
+  },
+  {
+    id: "mcdodo-earbuds",
+    label: "Mcdodo TWS Earbuds Lite",
+    image:
+      "/images/571321044-1453108393484093-4597872029433381603-n.jpg",
+    filter: "accessories",
+  },
+  {
+    id: "wemos-charger",
+    label: "Wemos 60W GaN Fast Charger",
+    image:
+      "/images/607579323-1513943600733905-6448583524778045728-n.jpg",
+    filter: "accessories",
+  },
+  {
+    id: "travel-phone-holder",
+    label: "Travel Phone Holder",
+    image:
+      "/images/571034028-1451131170348482-3837715130028409430-n.jpg",
+    filter: "accessories",
+  },
+];

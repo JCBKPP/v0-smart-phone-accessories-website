@@ -1,44 +1,14 @@
 "use client";
 
 import { useEffect, useRef, useState, useCallback } from "react";
+import Image from "next/image";
 import Link from "next/link";
-import {
-  Smartphone,
-  Shield,
-  Cable,
-  BatteryCharging,
-  Navigation,
-  Headphones,
-  Camera,
-  Hand,
-  Sparkles,
-  HardDrive,
-} from "lucide-react";
-import type { LucideIcon } from "lucide-react";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/lib/language-context";
-import type { TranslationKey } from "@/lib/translations";
+import { PRODUCTS, type Product } from "@/lib/products";
 
-interface Category {
-  nameKey: TranslationKey;
-  descKey: TranslationKey;
-  icon: LucideIcon;
-}
+/* ── helpers ─────────────────────────────────────────────────── */
 
-const CATEGORIES: Category[] = [
-  { nameKey: "phoneCases", descKey: "phoneCasesDesc", icon: Smartphone },
-  { nameKey: "screenProtectors", descKey: "screenProtectorsDesc", icon: Shield },
-  { nameKey: "chargingCables", descKey: "chargingCablesDesc", icon: Cable },
-  { nameKey: "powerBanks", descKey: "powerBanksDesc", icon: BatteryCharging },
-  { nameKey: "phoneHolders", descKey: "phoneHoldersDesc", icon: Navigation },
-  { nameKey: "earphones", descKey: "earphonesDesc", icon: Headphones },
-  { nameKey: "cameraAccessories", descKey: "cameraAccessoriesDesc", icon: Camera },
-  { nameKey: "phoneGrips", descKey: "phoneGripsDesc", icon: Hand },
-  { nameKey: "cleaningKits", descKey: "cleaningKitsDesc", icon: Sparkles },
-  { nameKey: "storage", descKey: "storageDesc", icon: HardDrive },
-];
-
-// Splits array into rows of N
 function chunkArray<T>(arr: T[], size: number): T[][] {
   const result: T[][] = [];
   for (let i = 0; i < arr.length; i += size) {
@@ -47,18 +17,15 @@ function chunkArray<T>(arr: T[], size: number): T[][] {
   return result;
 }
 
-function MobileCarousel({ categories, t }: { categories: Category[]; t: (key: TranslationKey) => string }) {
-  const rows = chunkArray(categories, 5);
-  return (
-    <div className="flex flex-col gap-3 md:hidden">
-      {rows.map((row, rowIndex) => (
-        <CarouselRow key={rowIndex} items={row} t={t} direction={rowIndex % 2 === 0 ? "left" : "right"} />
-      ))}
-    </div>
-  );
-}
+/* ── mobile auto-slide row ───────────────────────────────────── */
 
-function CarouselRow({ items, t, direction }: { items: Category[]; t: (key: TranslationKey) => string; direction: "left" | "right" }) {
+function CarouselRow({
+  items,
+  direction,
+}: {
+  items: Product[];
+  direction: "left" | "right";
+}) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [userInteracting, setUserInteracting] = useState(false);
   const timeoutRef = useRef<ReturnType<typeof setTimeout>>();
@@ -93,29 +60,56 @@ function CarouselRow({ items, t, direction }: { items: Category[]; t: (key: Tran
   return (
     <div
       ref={scrollRef}
-      className="flex gap-2.5 overflow-x-auto scrollbar-hide"
+      className="flex gap-3 overflow-x-auto scrollbar-hide"
       style={{ scrollBehavior: "auto" }}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
       onMouseDown={handleTouchStart}
       onMouseUp={handleTouchEnd}
     >
-      {items.map((cat) => {
-        const Icon = cat.icon;
-        return (
-          <Link
-            href="/album"
-            key={cat.nameKey}
-            className="shrink-0 flex flex-col items-center gap-2 rounded-xl border border-border/60 bg-secondary/50 p-3 text-center w-32 transition-colors hover:border-primary/30"
-          >
-            <Icon className="h-7 w-7 text-primary/80" strokeWidth={1.5} />
-            <h3 className="text-xs font-semibold text-foreground leading-tight">{t(cat.nameKey)}</h3>
-          </Link>
-        );
-      })}
+      {/* duplicate items for seamless loop */}
+      {[...items, ...items].map((product, idx) => (
+        <Link
+          href="/album"
+          key={`${product.id}-${idx}`}
+          className="shrink-0 w-36 rounded-xl border border-border/60 bg-secondary/30 overflow-hidden transition-colors hover:border-primary/30"
+        >
+          <div className="aspect-square relative bg-secondary/60">
+            <Image
+              src={product.image || "/placeholder.svg"}
+              alt={product.label}
+              fill
+              className="object-cover"
+              sizes="144px"
+            />
+          </div>
+          <div className="p-2">
+            <h3 className="text-[11px] font-semibold text-foreground leading-tight line-clamp-2">
+              {product.label}
+            </h3>
+          </div>
+        </Link>
+      ))}
     </div>
   );
 }
+
+function MobileCarousel({ products }: { products: Product[] }) {
+  const rows = chunkArray(products, 3);
+  return (
+    <div className="flex flex-col gap-3 md:hidden">
+      {rows.map((row, rowIndex) => (
+        <CarouselRow
+          key={rowIndex}
+          items={row}
+          direction={rowIndex % 2 === 0 ? "left" : "right"}
+        />
+      ))}
+    </div>
+  );
+}
+
+/* ── desktop grid ────────────────────────────────────────────── */
 
 const containerVariants = {
   hidden: {},
@@ -126,6 +120,8 @@ const itemVariants = {
   hidden: { opacity: 0, y: 16 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.35, ease: "easeOut" } },
 };
+
+/* ── main export ─────────────────────────────────────────────── */
 
 export function CategoryGrid() {
   const { t } = useLanguage();
@@ -154,44 +150,40 @@ export function CategoryGrid() {
           </Link>
         </motion.div>
 
-        {/* Mobile: 2-row auto-scrolling carousel */}
-        <MobileCarousel categories={CATEGORIES} t={t} />
+        {/* Mobile / Tablet: 2-row auto-scrolling image carousel */}
+        <MobileCarousel products={PRODUCTS} />
 
-        {/* Desktop: grid */}
+        {/* Desktop: image grid */}
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={containerVariants}
-          className="hidden md:grid grid-cols-3 lg:grid-cols-5 gap-3 lg:gap-4"
+          className="hidden md:grid grid-cols-3 lg:grid-cols-6 gap-3 lg:gap-4"
         >
-          {CATEGORIES.map((cat) => {
-            const Icon = cat.icon;
-            return (
-              <motion.div
-                key={cat.nameKey}
-                variants={itemVariants}
+          {PRODUCTS.map((product) => (
+            <motion.div key={product.id} variants={itemVariants}>
+              <Link
+                href="/album"
+                className="group flex flex-col rounded-xl border border-border/60 bg-secondary/30 overflow-hidden transition-all duration-200 hover:border-primary/30 hover:shadow-md hover:-translate-y-0.5"
               >
-                <Link
-                  href="/album"
-                  className="group flex flex-col items-center gap-2.5 rounded-xl border border-border/60 bg-secondary/50 p-4 lg:p-5 text-center transition-all duration-200 hover:border-primary/30 hover:bg-secondary hover:shadow-md hover:-translate-y-0.5"
-                >
-                  <Icon
-                    className="h-8 w-8 lg:h-9 lg:w-9 text-primary/80 transition-transform duration-200 group-hover:scale-110"
-                    strokeWidth={1.5}
+                <div className="aspect-square relative bg-secondary/60">
+                  <Image
+                    src={product.image || "/placeholder.svg"}
+                    alt={product.label}
+                    fill
+                    className="object-cover transition-transform duration-200 group-hover:scale-105"
+                    sizes="(min-width:1024px) 200px, 220px"
                   />
-                  <div>
-                    <h3 className="text-sm lg:text-base font-semibold text-foreground leading-tight">
-                      {t(cat.nameKey)}
-                    </h3>
-                    <p className="mt-0.5 text-xs text-muted-foreground">
-                      {t(cat.descKey)}
-                    </p>
-                  </div>
-                </Link>
-              </motion.div>
-            );
-          })}
+                </div>
+                <div className="p-3">
+                  <h3 className="text-sm font-semibold text-foreground leading-tight line-clamp-2">
+                    {product.label}
+                  </h3>
+                </div>
+              </Link>
+            </motion.div>
+          ))}
         </motion.div>
       </div>
     </section>
