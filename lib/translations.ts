@@ -129,6 +129,10 @@ export const translations = {
     faq5Q: "How do warranty and returns work?",
     faq5A: "Warranty terms vary by product type and branch. Items must be returned in good condition with original packaging and receipt. Visit the store or contact us via WhatsApp for claims.",
 
+    viewAllFaq: "View all FAQ",
+    privacyPolicy: "Privacy Policy",
+    warrantyReturn: "Warranty & Return Policy",
+
     // Privacy
     privacyTitle: "Privacy Policy",
     privacyIntro: "At Smart Phone Accessories Sdn Bhd, we value your privacy and are committed to protecting any information related to your visit to our website.",
@@ -254,6 +258,10 @@ export const translations = {
     faq5Q: "Bagaimana waranti dan pemulangan berfungsi?",
     faq5A: "Terma waranti berbeza mengikut jenis produk dan cawangan. Barangan mesti dipulangkan dalam keadaan baik dengan pembungkusan asal dan resit. Lawat kedai atau hubungi kami melalui WhatsApp untuk tuntutan.",
 
+    viewAllFaq: "Lihat semua Soalan Lazim",
+    privacyPolicy: "Dasar Privasi",
+    warrantyReturn: "Dasar Waranti & Pemulangan",
+
     privacyTitle: "Dasar Privasi",
     privacyIntro: "Di Smart Phone Accessories Sdn Bhd, kami menghargai privasi anda dan komited untuk melindungi sebarang maklumat berkaitan lawatan anda ke laman web kami.",
     privacyNoCollect: "Laman web ini tidak mengumpul butiran peribadi melalui borang, pendaftaran, atau daftar akaun. Kami tidak meminta nama, alamat emel, nombor telefon, atau sebarang maklumat pengenalan peribadi anda.",
@@ -376,6 +384,10 @@ export const translations = {
     faq4A: "是的，我们为批量和企业订单提供特别定价。通过WhatsApp联系我们或访问任何分店获取报价。",
     faq5Q: "保修和退货如何运作？",
     faq5A: "保修条款因产品类型和分店而异。物品必须在良好状态下退回，附带原始包装和收据。访问商店或通过WhatsApp联系我们进行索赔。",
+
+    viewAllFaq: "查看所有常见问题",
+    privacyPolicy: "隐私政策",
+    warrantyReturn: "保修和退货政策",
 
     privacyTitle: "隐私政策",
     privacyIntro: "在Smart Phone Accessories Sdn Bhd，我们重视您的隐私，并致力于保护与您访问我们网站相关的任何信息。",

@@ -46,8 +46,23 @@ export function SiteFooter() {
           </nav>
         </div>
 
-        {/* Copyright */}
-        <div className="mt-6 pt-4 border-t border-border">
+        {/* Policy links + Copyright */}
+        <div className="mt-6 pt-4 border-t border-border flex flex-col items-center gap-2">
+          <div className="flex items-center gap-4">
+            <Link
+              href="/privacy"
+              className="text-[11px] text-muted-foreground/60 hover:text-muted-foreground hover:underline transition-colors"
+            >
+              {t("privacyTitle")}
+            </Link>
+            <span className="text-muted-foreground/30 text-[11px]">|</span>
+            <Link
+              href="/warranty-return"
+              className="text-[11px] text-muted-foreground/60 hover:text-muted-foreground hover:underline transition-colors"
+            >
+              {t("warrantyTitle")}
+            </Link>
+          </div>
           <p className="text-xs text-muted-foreground text-center">
             {t("copyright")}
           </p>
