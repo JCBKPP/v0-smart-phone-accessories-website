@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, useCallback } from "react";
+import Link from "next/link";
 import {
   Smartphone,
   Shield,
@@ -102,13 +103,14 @@ function CarouselRow({ items, t, direction }: { items: Category[]; t: (key: Tran
       {items.map((cat) => {
         const Icon = cat.icon;
         return (
-          <div
+          <Link
+            href="/album"
             key={cat.nameKey}
-            className="shrink-0 flex flex-col items-center gap-2 rounded-xl border border-border/60 bg-secondary/50 p-3 text-center w-32"
+            className="shrink-0 flex flex-col items-center gap-2 rounded-xl border border-border/60 bg-secondary/50 p-3 text-center w-32 transition-colors hover:border-primary/30"
           >
             <Icon className="h-7 w-7 text-primary/80" strokeWidth={1.5} />
             <h3 className="text-xs font-semibold text-foreground leading-tight">{t(cat.nameKey)}</h3>
-          </div>
+          </Link>
         );
       })}
     </div>
@@ -144,6 +146,12 @@ export function CategoryGrid() {
           <p className="mt-2 text-sm md:text-base text-muted-foreground max-w-md mx-auto leading-relaxed">
             {t("whatWeSellSubtitle")}
           </p>
+          <Link
+            href="/album"
+            className="mt-2 inline-block text-xs text-muted-foreground hover:text-primary hover:underline transition-colors"
+          >
+            {t("viewAlbum")} {">"}
+          </Link>
         </motion.div>
 
         {/* Mobile: 2-row auto-scrolling carousel */}
@@ -163,20 +171,24 @@ export function CategoryGrid() {
               <motion.div
                 key={cat.nameKey}
                 variants={itemVariants}
-                className="group flex flex-col items-center gap-2.5 rounded-xl border border-border/60 bg-secondary/50 p-4 lg:p-5 text-center transition-all duration-200 hover:border-primary/30 hover:bg-secondary hover:shadow-md hover:-translate-y-0.5"
               >
-                <Icon
-                  className="h-8 w-8 lg:h-9 lg:w-9 text-primary/80 transition-transform duration-200 group-hover:scale-110"
-                  strokeWidth={1.5}
-                />
-                <div>
-                  <h3 className="text-sm lg:text-base font-semibold text-foreground leading-tight">
-                    {t(cat.nameKey)}
-                  </h3>
-                  <p className="mt-0.5 text-xs text-muted-foreground">
-                    {t(cat.descKey)}
-                  </p>
-                </div>
+                <Link
+                  href="/album"
+                  className="group flex flex-col items-center gap-2.5 rounded-xl border border-border/60 bg-secondary/50 p-4 lg:p-5 text-center transition-all duration-200 hover:border-primary/30 hover:bg-secondary hover:shadow-md hover:-translate-y-0.5"
+                >
+                  <Icon
+                    className="h-8 w-8 lg:h-9 lg:w-9 text-primary/80 transition-transform duration-200 group-hover:scale-110"
+                    strokeWidth={1.5}
+                  />
+                  <div>
+                    <h3 className="text-sm lg:text-base font-semibold text-foreground leading-tight">
+                      {t(cat.nameKey)}
+                    </h3>
+                    <p className="mt-0.5 text-xs text-muted-foreground">
+                      {t(cat.descKey)}
+                    </p>
+                  </div>
+                </Link>
               </motion.div>
             );
           })}

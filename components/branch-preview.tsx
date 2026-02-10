@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, MapPin, Clock } from "lucide-react";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/lib/language-context";
 
@@ -26,6 +26,9 @@ const BRANCHES = [
   },
 ];
 
+// Only show first 2 on homepage
+const PREVIEW_BRANCHES = BRANCHES.slice(0, 2);
+
 const containerVariants = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.08 } },
@@ -44,7 +47,7 @@ export function BranchPreview() {
   const { t } = useLanguage();
 
   return (
-    <section className="py-12 md:py-16 bg-secondary/50">
+    <section className="py-12 md:py-16 bg-background">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -66,13 +69,13 @@ export function BranchPreview() {
           whileInView="visible"
           viewport={{ once: true }}
           variants={containerVariants}
-          className="grid grid-cols-1 sm:grid-cols-3 gap-4"
+          className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-3xl mx-auto"
         >
-          {BRANCHES.map((branch) => (
+          {PREVIEW_BRANCHES.map((branch) => (
             <motion.div
               key={branch.name}
               variants={itemVariants}
-              className="rounded-xl border border-border/60 bg-background p-5 md:p-6 flex flex-col gap-3 transition-all duration-200 hover:shadow-md hover:border-primary/20"
+              className="rounded-xl border border-border/60 bg-secondary/40 p-5 md:p-6 flex flex-col gap-3 transition-all duration-200 hover:shadow-md hover:border-primary/20"
             >
               <h3 className="text-lg font-semibold text-foreground">
                 {branch.name}
@@ -93,9 +96,14 @@ export function BranchPreview() {
                   WhatsApp
                 </a>
               </div>
-              <p className="text-sm text-muted-foreground leading-relaxed flex-1">
-                {branch.address}
-              </p>
+              <div className="flex items-start gap-2 text-sm text-muted-foreground leading-relaxed">
+                <MapPin className="h-4 w-4 shrink-0 mt-0.5 text-muted-foreground/60" />
+                <span>{branch.address}</span>
+              </div>
+              <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                <Clock className="h-3.5 w-3.5 shrink-0 text-muted-foreground/60" />
+                <span>{t("hours")}</span>
+              </div>
               <Link
                 href="/find-us"
                 className="text-sm font-medium text-primary hover:text-accent transition-colors group inline-flex items-center gap-1 mt-1"
@@ -105,6 +113,23 @@ export function BranchPreview() {
               </Link>
             </motion.div>
           ))}
+        </motion.div>
+
+        {/* See more button */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4, delay: 0.2 }}
+          className="text-center mt-8"
+        >
+          <Link
+            href="/find-us"
+            className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-2.5 text-sm font-semibold text-foreground hover:bg-secondary transition-all duration-200 min-h-[44px] group"
+          >
+            {t("findOurStores")}
+            <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
+          </Link>
         </motion.div>
       </div>
     </section>

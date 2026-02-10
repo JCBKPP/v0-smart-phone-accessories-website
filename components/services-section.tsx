@@ -22,12 +22,6 @@ const SERVICES: Service[] = [
     icon: Package,
     whatsapp: true,
   },
-  {
-    nameKey: "letUsKnow",
-    descKey: "letUsKnowDesc",
-    icon: MessageCircle,
-    whatsapp: true,
-  },
 ];
 
 const containerVariants = {
@@ -70,7 +64,7 @@ export function ServicesSection() {
           whileInView="visible"
           viewport={{ once: true }}
           variants={containerVariants}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
+          className="grid grid-cols-1 sm:grid-cols-3 gap-4"
         >
           {SERVICES.map((svc) => {
             const Icon = svc.icon;

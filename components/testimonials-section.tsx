@@ -1,9 +1,11 @@
 "use client";
 
+import React from "react"
+
 import { Star } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/lib/language-context";
-import { useRef } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 
 const TESTIMONIALS = [
   {
@@ -47,23 +49,71 @@ function getInitials(name: string) {
     .slice(0, 2);
 }
 
-const containerVariants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.08 } },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 16 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.35, ease: "easeOut" },
-  },
-};
+function TestimonialCard({ review }: { review: (typeof TESTIMONIALS)[number] }) {
+  return (
+    <div className="rounded-xl border border-border/60 bg-background p-5 md:p-6 flex flex-col gap-3 shadow-sm h-full">
+      <div className="flex items-center gap-3">
+        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary text-sm font-bold shrink-0">
+          {getInitials(review.name)}
+        </div>
+        <div>
+          <p className="text-sm font-semibold text-foreground">{review.name}</p>
+          <div className="flex gap-0.5 mt-0.5">
+            {Array.from({ length: review.rating }).map((_, i) => (
+              <Star
+                key={i}
+                className="h-3 w-3 fill-amber-400 text-amber-400"
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+      <p className="text-sm text-muted-foreground leading-relaxed flex-1">
+        {`"${review.quote}"`}
+      </p>
+      <p className="text-xs text-muted-foreground/60 mt-auto">
+        Facebook Review
+      </p>
+    </div>
+  );
+}
 
 export function TestimonialsSection() {
   const { t } = useLanguage();
-  const scrollRef = useRef<HTMLDivElement>(null);
+  const [current, setCurrent] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const touchStartX = useRef<number | null>(null);
+
+  const next = useCallback(() => {
+    setCurrent((prev) => (prev + 1) % TESTIMONIALS.length);
+  }, []);
+
+  const prev = useCallback(() => {
+    setCurrent((prev) => (prev - 1 + TESTIMONIALS.length) % TESTIMONIALS.length);
+  }, []);
+
+  // Auto-advance every 5s
+  useEffect(() => {
+    if (isPaused) return;
+    const timer = setInterval(next, 5000);
+    return () => clearInterval(timer);
+  }, [next, isPaused]);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+    setIsPaused(true);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null) return;
+    const diff = touchStartX.current - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) next();
+      else prev();
+    }
+    touchStartX.current = null;
+    setTimeout(() => setIsPaused(false), 3000);
+  };
 
   return (
     <section className="py-12 md:py-16 bg-secondary/50">
@@ -83,114 +133,84 @@ export function TestimonialsSection() {
           </p>
         </motion.div>
 
-        {/* Mobile: horizontal scroll */}
+        {/* Mobile/Tablet: single card auto-slide carousel */}
         <div
-          ref={scrollRef}
-          className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide md:hidden -mx-4 px-4"
+          className="md:hidden relative overflow-hidden"
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
         >
-          {TESTIMONIALS.map((review) => (
-            <div
-              key={review.name}
-              className="min-w-[280px] max-w-[320px] snap-center shrink-0 rounded-xl border border-border/60 bg-background p-5 flex flex-col gap-3 shadow-sm"
-            >
-              <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary text-sm font-bold shrink-0">
-                  {getInitials(review.name)}
-                </div>
-                <div>
-                  <p className="text-sm font-semibold text-foreground">{review.name}</p>
-                  <div className="flex gap-0.5 mt-0.5">
-                    {Array.from({ length: review.rating }).map((_, i) => (
-                      <Star
-                        key={i}
-                        className="h-3 w-3 fill-amber-400 text-amber-400"
-                      />
-                    ))}
-                  </div>
-                </div>
-              </div>
-              <p className="text-sm text-muted-foreground leading-relaxed line-clamp-4">
-                {`"${review.quote}"`}
-              </p>
-              <p className="text-xs text-muted-foreground/60 mt-auto">
-                Facebook Review
-              </p>
-            </div>
-          ))}
-        </div>
-
-        {/* Desktop: 3-column grid */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={containerVariants}
-          className="hidden md:grid md:grid-cols-3 gap-4"
-        >
-          {TESTIMONIALS.slice(0, 3).map((review) => (
-            <motion.div
-              key={review.name}
-              variants={itemVariants}
-              className="rounded-xl border border-border/60 bg-background p-6 flex flex-col gap-3 transition-all duration-200 hover:shadow-md hover:border-primary/20"
-            >
-              <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary text-sm font-bold shrink-0">
-                  {getInitials(review.name)}
-                </div>
-                <div>
-                  <p className="text-sm font-semibold text-foreground">{review.name}</p>
-                  <div className="flex gap-0.5 mt-0.5">
-                    {Array.from({ length: review.rating }).map((_, i) => (
-                      <Star
-                        key={i}
-                        className="h-3 w-3 fill-amber-400 text-amber-400"
-                      />
-                    ))}
-                  </div>
-                </div>
-              </div>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                {`"${review.quote}"`}
-              </p>
-              <p className="text-xs text-muted-foreground/60 mt-auto">
-                Facebook Review
-              </p>
-            </motion.div>
-          ))}
-          {/* Second row: 2 cards centered */}
-          <div className="col-span-3 flex justify-center gap-4">
-            {TESTIMONIALS.slice(3).map((review) => (
+          <div className="min-h-[200px]">
+            <AnimatePresence mode="wait">
               <motion.div
-                key={review.name}
-                variants={itemVariants}
-                className="rounded-xl border border-border/60 bg-background p-6 flex flex-col gap-3 transition-all duration-200 hover:shadow-md hover:border-primary/20 w-full max-w-md"
+                key={current}
+                initial={{ opacity: 0, x: 60 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -60 }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
               >
-                <div className="flex items-center gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary text-sm font-bold shrink-0">
-                    {getInitials(review.name)}
-                  </div>
-                  <div>
-                    <p className="text-sm font-semibold text-foreground">{review.name}</p>
-                    <div className="flex gap-0.5 mt-0.5">
-                      {Array.from({ length: review.rating }).map((_, i) => (
-                        <Star
-                          key={i}
-                          className="h-3 w-3 fill-amber-400 text-amber-400"
-                        />
-                      ))}
-                    </div>
-                  </div>
-                </div>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  {`"${review.quote}"`}
-                </p>
-                <p className="text-xs text-muted-foreground/60 mt-auto">
-                  Facebook Review
-                </p>
+                <TestimonialCard review={TESTIMONIALS[current]} />
               </motion.div>
+            </AnimatePresence>
+          </div>
+
+          {/* Dots */}
+          <div className="flex justify-center gap-1.5 mt-4">
+            {TESTIMONIALS.map((_, i) => (
+              <button
+                key={i}
+                type="button"
+                onClick={() => { setCurrent(i); setIsPaused(true); setTimeout(() => setIsPaused(false), 3000); }}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  i === current ? "w-6 bg-primary" : "w-2 bg-border hover:bg-muted-foreground/40"
+                }`}
+                aria-label={`Go to testimonial ${i + 1}`}
+              />
             ))}
           </div>
-        </motion.div>
+        </div>
+
+        {/* Desktop: also carousel but showing 3 at a time */}
+        <div
+          className="hidden md:block relative"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
+          <div className="grid grid-cols-3 gap-4">
+            {[0, 1, 2].map((offset) => {
+              const idx = (current + offset) % TESTIMONIALS.length;
+              return (
+                <AnimatePresence mode="wait" key={offset}>
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -12 }}
+                    transition={{ duration: 0.3, ease: "easeOut", delay: offset * 0.05 }}
+                  >
+                    <TestimonialCard review={TESTIMONIALS[idx]} />
+                  </motion.div>
+                </AnimatePresence>
+              );
+            })}
+          </div>
+
+          {/* Dots */}
+          <div className="flex justify-center gap-1.5 mt-6">
+            {TESTIMONIALS.map((_, i) => (
+              <button
+                key={i}
+                type="button"
+                onClick={() => { setCurrent(i); setIsPaused(true); setTimeout(() => setIsPaused(false), 3000); }}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  i === current ? "w-6 bg-primary" : "w-2 bg-border hover:bg-muted-foreground/40"
+                }`}
+                aria-label={`Go to testimonial ${i + 1}`}
+              />
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
