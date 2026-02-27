@@ -129,6 +129,9 @@ export default function FindUsPage() {
           <p className="mt-2 text-sm md:text-base text-muted-foreground max-w-lg leading-relaxed">
             {t("findUsSubtitle")}
           </p>
+          <p className="mt-3 text-sm font-semibold text-primary">
+            {ALL_BRANCHES_FLAT.length} {t("storesAcrossSabah")}
+          </p>
         </div>
       </section>
 
